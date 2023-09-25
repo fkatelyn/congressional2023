@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		876F55B12AC11D1E00048430 /* PalmVisionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F55B02AC11D1E00048430 /* PalmVisionApp.swift */; };
+		876F55B32AC11D1E00048430 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F55B22AC11D1E00048430 /* ContentView.swift */; };
+		876F55B52AC11D2000048430 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 876F55B42AC11D2000048430 /* Assets.xcassets */; };
+		876F55B82AC11D2000048430 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 876F55B72AC11D2000048430 /* Preview Assets.xcassets */; };
+		876F55C22AC11D2000048430 /* PalmVisionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F55C12AC11D2000048430 /* PalmVisionTests.swift */; };
+		876F55CC2AC11D2000048430 /* PalmVisionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F55CB2AC11D2000048430 /* PalmVisionUITests.swift */; };
+		876F55CE2AC11D2000048430 /* PalmVisionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F55CD2AC11D2000048430 /* PalmVisionUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		876F55BE2AC11D2000048430 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 876F55A52AC11D1E00048430 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 876F55AC2AC11D1E00048430;
+			remoteInfo = PalmVision;
+		};
+		876F55C82AC11D2000048430 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 876F55A52AC11D1E00048430 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 876F55AC2AC11D1E00048430;
+			remoteInfo = PalmVision;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		876F55AD2AC11D1E00048430 /* PalmVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PalmVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		876F55B02AC11D1E00048430 /* PalmVisionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalmVisionApp.swift; sourceTree = "<group>"; };
+		876F55B22AC11D1E00048430 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		876F55B42AC11D2000048430 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		876F55B72AC11D2000048430 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		876F55BD2AC11D2000048430 /* PalmVisionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PalmVisionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		876F55C12AC11D2000048430 /* PalmVisionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalmVisionTests.swift; sourceTree = "<group>"; };
+		876F55C72AC11D2000048430 /* PalmVisionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PalmVisionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		876F55CB2AC11D2000048430 /* PalmVisionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalmVisionUITests.swift; sourceTree = "<group>"; };
+		876F55CD2AC11D2000048430 /* PalmVisionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalmVisionUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		876F55AA2AC11D1E00048430 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		876F55BA2AC11D2000048430 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		876F55C42AC11D2000048430 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		876F55A42AC11D1E00048430 = {
+			isa = PBXGroup;
+			children = (
+				876F55AF2AC11D1E00048430 /* PalmVision */,
+				876F55C02AC11D2000048430 /* PalmVisionTests */,
+				876F55CA2AC11D2000048430 /* PalmVisionUITests */,
+				876F55AE2AC11D1E00048430 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		876F55AE2AC11D1E00048430 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				876F55AD2AC11D1E00048430 /* PalmVision.app */,
+				876F55BD2AC11D2000048430 /* PalmVisionTests.xctest */,
+				876F55C72AC11D2000048430 /* PalmVisionUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		876F55AF2AC11D1E00048430 /* PalmVision */ = {
+			isa = PBXGroup;
+			children = (
+				876F55B02AC11D1E00048430 /* PalmVisionApp.swift */,
+				876F55B22AC11D1E00048430 /* ContentView.swift */,
+				876F55B42AC11D2000048430 /* Assets.xcassets */,
+				876F55B62AC11D2000048430 /* Preview Content */,
+			);
+			path = PalmVision;
+			sourceTree = "<group>";
+		};
+		876F55B62AC11D2000048430 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				876F55B72AC11D2000048430 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		876F55C02AC11D2000048430 /* PalmVisionTests */ = {
+			isa = PBXGroup;
+			children = (
+				876F55C12AC11D2000048430 /* PalmVisionTests.swift */,
+			);
+			path = PalmVisionTests;
+			sourceTree = "<group>";
+		};
+		876F55CA2AC11D2000048430 /* PalmVisionUITests */ = {
+			isa = PBXGroup;
+			children = (
+				876F55CB2AC11D2000048430 /* PalmVisionUITests.swift */,
+				876F55CD2AC11D2000048430 /* PalmVisionUITestsLaunchTests.swift */,
+			);
+			path = PalmVisionUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		876F55AC2AC11D1E00048430 /* PalmVision */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 876F55D12AC11D2000048430 /* Build configuration list for PBXNativeTarget "PalmVision" */;
+			buildPhases = (
+				876F55A92AC11D1E00048430 /* Sources */,
+				876F55AA2AC11D1E00048430 /* Frameworks */,
+				876F55AB2AC11D1E00048430 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PalmVision;
+			productName = PalmVision;
+			productReference = 876F55AD2AC11D1E00048430 /* PalmVision.app */;
+			productType = "com.apple.product-type.application";
+		};
+		876F55BC2AC11D2000048430 /* PalmVisionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 876F55D42AC11D2000048430 /* Build configuration list for PBXNativeTarget "PalmVisionTests" */;
+			buildPhases = (
+				876F55B92AC11D2000048430 /* Sources */,
+				876F55BA2AC11D2000048430 /* Frameworks */,
+				876F55BB2AC11D2000048430 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				876F55BF2AC11D2000048430 /* PBXTargetDependency */,
+			);
+			name = PalmVisionTests;
+			productName = PalmVisionTests;
+			productReference = 876F55BD2AC11D2000048430 /* PalmVisionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		876F55C62AC11D2000048430 /* PalmVisionUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 876F55D72AC11D2000048430 /* Build configuration list for PBXNativeTarget "PalmVisionUITests" */;
+			buildPhases = (
+				876F55C32AC11D2000048430 /* Sources */,
+				876F55C42AC11D2000048430 /* Frameworks */,
+				876F55C52AC11D2000048430 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				876F55C92AC11D2000048430 /* PBXTargetDependency */,
+			);
+			name = PalmVisionUITests;
+			productName = PalmVisionUITests;
+			productReference = 876F55C72AC11D2000048430 /* PalmVisionUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		876F55A52AC11D1E00048430 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					876F55AC2AC11D1E00048430 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					876F55BC2AC11D2000048430 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 876F55AC2AC11D1E00048430;
+					};
+					876F55C62AC11D2000048430 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = 876F55AC2AC11D1E00048430;
+					};
+				};
+			};
+			buildConfigurationList = 876F55A82AC11D1E00048430 /* Build configuration list for PBXProject "PalmVision" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 876F55A42AC11D1E00048430;
+			productRefGroup = 876F55AE2AC11D1E00048430 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				876F55AC2AC11D1E00048430 /* PalmVision */,
+				876F55BC2AC11D2000048430 /* PalmVisionTests */,
+				876F55C62AC11D2000048430 /* PalmVisionUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		876F55AB2AC11D1E00048430 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				876F55B82AC11D2000048430 /* Preview Assets.xcassets in Resources */,
+				876F55B52AC11D2000048430 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		876F55BB2AC11D2000048430 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		876F55C52AC11D2000048430 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		876F55A92AC11D1E00048430 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				876F55B32AC11D1E00048430 /* ContentView.swift in Sources */,
+				876F55B12AC11D1E00048430 /* PalmVisionApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		876F55B92AC11D2000048430 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				876F55C22AC11D2000048430 /* PalmVisionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		876F55C32AC11D2000048430 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				876F55CE2AC11D2000048430 /* PalmVisionUITestsLaunchTests.swift in Sources */,
+				876F55CC2AC11D2000048430 /* PalmVisionUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		876F55BF2AC11D2000048430 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 876F55AC2AC11D1E00048430 /* PalmVision */;
+			targetProxy = 876F55BE2AC11D2000048430 /* PBXContainerItemProxy */;
+		};
+		876F55C92AC11D2000048430 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 876F55AC2AC11D1E00048430 /* PalmVision */;
+			targetProxy = 876F55C82AC11D2000048430 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		876F55CF2AC11D2000048430 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		876F55D02AC11D2000048430 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		876F55D22AC11D2000048430 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PalmVision/Preview Content\"";
+				DEVELOPMENT_TEAM = CTQ5C85MG6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fkatelyn.PalmVision;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		876F55D32AC11D2000048430 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"PalmVision/Preview Content\"";
+				DEVELOPMENT_TEAM = CTQ5C85MG6;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fkatelyn.PalmVision;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		876F55D52AC11D2000048430 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CTQ5C85MG6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fkatelyn.PalmVisionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PalmVision.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PalmVision";
+			};
+			name = Debug;
+		};
+		876F55D62AC11D2000048430 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CTQ5C85MG6;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fkatelyn.PalmVisionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PalmVision.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PalmVision";
+			};
+			name = Release;
+		};
+		876F55D82AC11D2000048430 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CTQ5C85MG6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fkatelyn.PalmVisionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PalmVision;
+			};
+			name = Debug;
+		};
+		876F55D92AC11D2000048430 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CTQ5C85MG6;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = fkatelyn.PalmVisionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = PalmVision;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		876F55A82AC11D1E00048430 /* Build configuration list for PBXProject "PalmVision" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				876F55CF2AC11D2000048430 /* Debug */,
+				876F55D02AC11D2000048430 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		876F55D12AC11D2000048430 /* Build configuration list for PBXNativeTarget "PalmVision" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				876F55D22AC11D2000048430 /* Debug */,
+				876F55D32AC11D2000048430 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		876F55D42AC11D2000048430 /* Build configuration list for PBXNativeTarget "PalmVisionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				876F55D52AC11D2000048430 /* Debug */,
+				876F55D62AC11D2000048430 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		876F55D72AC11D2000048430 /* Build configuration list for PBXNativeTarget "PalmVisionUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				876F55D82AC11D2000048430 /* Debug */,
+				876F55D92AC11D2000048430 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 876F55A52AC11D1E00048430 /* Project object */;
+}
