@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8724D6512AD1D00C004A497D /* best.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 8724D6502AD1D00C004A497D /* best.mlpackage */; };
+		8724D6522AD1D00C004A497D /* best.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 8724D6502AD1D00C004A497D /* best.mlpackage */; };
 		876F55B12AC11D1E00048430 /* PalmVisionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F55B02AC11D1E00048430 /* PalmVisionApp.swift */; };
 		876F55B32AC11D1E00048430 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F55B22AC11D1E00048430 /* ContentView.swift */; };
 		876F55B52AC11D2000048430 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 876F55B42AC11D2000048430 /* Assets.xcassets */; };
@@ -34,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8724D6502AD1D00C004A497D /* best.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = best.mlpackage; sourceTree = "<group>"; };
 		876F55AD2AC11D1E00048430 /* PalmVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PalmVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		876F55B02AC11D1E00048430 /* PalmVisionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalmVisionApp.swift; sourceTree = "<group>"; };
 		876F55B22AC11D1E00048430 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +97,7 @@
 		876F55AF2AC11D1E00048430 /* PalmVision */ = {
 			isa = PBXGroup;
 			children = (
+				8724D6502AD1D00C004A497D /* best.mlpackage */,
 				876F55B02AC11D1E00048430 /* PalmVisionApp.swift */,
 				876F55B22AC11D1E00048430 /* ContentView.swift */,
 				876F55B42AC11D2000048430 /* Assets.xcassets */,
@@ -259,6 +263,7 @@
 			files = (
 				876F55B32AC11D1E00048430 /* ContentView.swift in Sources */,
 				876F55B12AC11D1E00048430 /* PalmVisionApp.swift in Sources */,
+				8724D6512AD1D00C004A497D /* best.mlpackage in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +281,7 @@
 			files = (
 				876F55CE2AC11D2000048430 /* PalmVisionUITestsLaunchTests.swift in Sources */,
 				876F55CC2AC11D2000048430 /* PalmVisionUITests.swift in Sources */,
+				8724D6522AD1D00C004A497D /* best.mlpackage in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

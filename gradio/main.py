@@ -25,9 +25,8 @@ img_resized = img.resize(size, Image.LANCZOS)
 # Model
 #model = torch.hub.load('ultralytics/yolov8', 'yolov7s')  #
 # force_reload=True to update
-from ultralytics import YOLO
-
 model = YOLO(f'/Users/katelyn/Downloads/palmtree/weights/7/best.pt')
+model.export(format='coreml', nms=True)#, weights_dir='/content/runs/detect/train/weights')
 
 
 def yolo_img(im, conf, size=640):
