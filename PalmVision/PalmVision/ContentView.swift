@@ -7,6 +7,14 @@
 
 import SwiftUI
 import PhotosUI
+import CoreML
+import Vision
+
+struct Observation {
+    let label: String
+    let confidence: VNConfidence
+    let boundingBox: CGRect
+}
 
 struct ContentView: View {
     @State private var avatarItem: PhotosPickerItem?
@@ -16,8 +24,8 @@ struct ContentView: View {
     @State private var selectedImage: PhotosPickerItem?
     @State private var selectedUiImage: UIImage?
 
-    
-    
+    let model = try! best(configuration: MLModelConfiguration())
+
     var body: some View {
         VStack {
             
@@ -53,6 +61,35 @@ struct ContentView: View {
                     
                     print("Failed")
                 }         
+            }
+            Button("Predict") {
+                let mlModel = model.model
+                guard let coreMlModel = try? VNCoreMLModel(for: mlModel) else { return }
+                let request = VNCoreMLRequest(model: coreMlModel) {
+                    request, error in
+                    guard let results = request.results as? [VNRecognizedObjectObservation] else {
+                        return
+                    }
+
+                    let detectedObjects = results.map { result in
+                        guard let label = result.labels.first?.identifier else {
+                            return Observation(label: "", confidence: VNConfidence.zero, boundingBox: .zero)
+                        }
+                        let confidence = result.labels.first?.confidence ?? 0.0
+                        let boundingBox = result.boundingBox
+                        print(label)
+                        return Observation(label: label, confidence: 0.0, boundingBox: boundingBox)
+                    }
+                }
+                guard let image = selectedUiImage,
+                      let pixelBuffer = image.toCVPixelBuffer() else { return
+                }
+                let requestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
+                do {
+                    try requestHandler.perform([request])
+                } catch {
+                    print(error.localizedDescription)
+                }
             }
             /*{ result in
                 switch result {
