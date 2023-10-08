@@ -1,0 +1,16 @@
+{
+  "MLModelVersionStringKey" : "8.0.182",
+  "MLModelDescriptionKey" : "Ultralytics best model trained on \/content\/datasets\/palm-tree-detection-7\/data.yaml",
+  "MLModelCreatorDefinedKey" : {
+    "stride" : "32",
+    "Confidence threshold" : "0.25",
+    "IoU threshold" : "0.45",
+    "task" : "detect",
+    "date" : "2023-10-07T10:30:58.661759",
+    "imgsz" : "[640, 640]",
+    "batch" : "1",
+    "names" : "{0: 'banana', 1: 'cattle', 2: 'ganoderma', 3: 'healthy', 4: 'nitrogen', 5: 'young'}"
+  },
+  "MLModelAuthorKey" : "Katelyn Fritz",
+  "MLModelLicenseKey" : "AGPL-3.0 https:\/\/ultralytics.com\/license"
+}
