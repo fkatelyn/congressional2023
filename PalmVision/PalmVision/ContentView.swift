@@ -23,18 +23,43 @@ struct ContentView: View {
     @State private var isImagePickerShown: Bool = false
     @State private var selectedImage: PhotosPickerItem?
     @State private var selectedUiImage: UIImage?
+    
+    @State private var detectedObjects: [Observation] = []
 
-    let model = try! best(configuration: MLModelConfiguration())
 
+    let compiledModel = try! best(configuration: MLModelConfiguration())
+    private var overlayView: some View {
+        GeometryReader { geometry in
+            Path { path in
+                for observation in detectedObjects {
+                    let rect = VNImageRectForNormalizedRect(observation.boundingBox, Int(geometry.size.width), Int(geometry.size.height))
+                    let cgRect = CGRect(x: rect.origin.x, y: geometry.size.height - rect.origin.y - rect.size.height, width: rect.size.width, height: rect.size.height)
+                    path.addRect(cgRect)
+                }
+            }
+            .stroke(Color.red, lineWidth: 2)
+        }
+    }
+    
+    let assetName = "palm"
+    
     var body: some View {
         VStack {
             
             VStack(spacing: 20) {
+                Image(assetName)
+                    .resizable()
+                    .scaledToFit()
+                    .overlay(overlayView)
+                /*
+                
                 if let img = selectedUiImage {
                     Image(uiImage: img)
                         .resizable()
                         .scaledToFit()
+                        .overlay(overlayView)
                 }
+                 */
                 Button(
                     action: { isImagePickerShown = true }
                 ) {
@@ -63,7 +88,7 @@ struct ContentView: View {
                 }         
             }
             Button("Predict") {
-                let mlModel = model.model
+                let mlModel = compiledModel.model
                 guard let coreMlModel = try? VNCoreMLModel(for: mlModel) else { return }
                 let request = VNCoreMLRequest(model: coreMlModel) {
                     request, error in
@@ -71,20 +96,20 @@ struct ContentView: View {
                         return
                     }
 
-                    let detectedObjects = results.map { result in
+                    detectedObjects = results.map { result in
                         guard let label = result.labels.first?.identifier else {
                             return Observation(label: "", confidence: VNConfidence.zero, boundingBox: .zero)
                         }
                         let confidence = result.labels.first?.confidence ?? 0.0
                         let boundingBox = result.boundingBox
-                        print(label)
-                        return Observation(label: label, confidence: 0.0, boundingBox: boundingBox)
+                        print("\(label) \(confidence)")
+                        return Observation(label: label, confidence: confidence, boundingBox: boundingBox)
                     }
                 }
-                guard let image = selectedUiImage,
-                      let pixelBuffer = image.toCVPixelBuffer() else { return
-                }
-                let requestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
+                //guard let image = selectedUiImage,
+                guard let image = UIImage(named: assetName),
+                      let cgImage = image.cgImage else { return }
+                let requestHandler = VNImageRequestHandler(cgImage: cgImage)
                 do {
                     try requestHandler.perform([request])
                 } catch {
