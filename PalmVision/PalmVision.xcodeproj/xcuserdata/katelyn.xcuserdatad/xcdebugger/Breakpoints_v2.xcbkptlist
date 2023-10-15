@@ -14,10 +14,106 @@
             filePath = "PalmVision/ContentView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "body"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "abody"
             landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9F895DB5-1CB7-4006-897C-5C7787843ADC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PalmVision/ImageViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "ImageAttachment"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "9F895DB5-1CB7-4006-897C-5C7787843ADC - f4870f03af55d27d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PalmVision.ImageViewModel.ImageAttachment.extractLocation(from: __C.UIImage) -&gt; __C.CLLocationCoordinate2D"
+                  moduleName = "PalmVision"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/katelyn/GitHub/congressional2023/PalmVision/PalmVision/ImageViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "284">
+               </Location>
+               <Location
+                  uuid = "9F895DB5-1CB7-4006-897C-5C7787843ADC - f4870f03af55d27d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "PalmVision.ImageViewModel.ImageAttachment.extractLocation(from: __C.UIImage) -&gt; __C.CLLocationCoordinate2D"
+                  moduleName = "PalmVision"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/katelyn/GitHub/congressional2023/PalmVision/PalmVision/ImageViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "360">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D616A4BC-72DD-48F6-A248-231B5F7EF6C3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PalmVision/ImageViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "loadImage()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D616A4BC-72DD-48F6-A248-231B5F7EF6C3 - 6f2d4b15307525c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for PalmVision.ImageViewModel.ImageAttachment.loadImage() async -&gt; ()"
+                  moduleName = "PalmVision"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/katelyn/GitHub/congressional2023/PalmVision/PalmVision/ImageViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "3404">
+               </Location>
+               <Location
+                  uuid = "D616A4BC-72DD-48F6-A248-231B5F7EF6C3 - 6f2d4b15307525c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for PalmVision.ImageViewModel.ImageAttachment.loadImage() async -&gt; ()"
+                  moduleName = "PalmVision"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/katelyn/GitHub/congressional2023/PalmVision/PalmVision/ImageViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "119"
+                  endingLineNumber = "119"
+                  offsetFromSymbolStart = "2856">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

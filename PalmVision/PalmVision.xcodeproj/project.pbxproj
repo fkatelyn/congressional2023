@@ -16,6 +16,7 @@
 		876F55C22AC11D2000048430 /* PalmVisionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F55C12AC11D2000048430 /* PalmVisionTests.swift */; };
 		876F55CC2AC11D2000048430 /* PalmVisionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F55CB2AC11D2000048430 /* PalmVisionUITests.swift */; };
 		876F55CE2AC11D2000048430 /* PalmVisionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F55CD2AC11D2000048430 /* PalmVisionUITestsLaunchTests.swift */; };
+		87BD3EF92AD583CC00EB4329 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BD3EF82AD583CC00EB4329 /* ImageViewModel.swift */; };
 		87C0F63D2AD22A28000BAB3C /* UiImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C0F63C2AD22A28000BAB3C /* UiImageExtension.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		876F55C72AC11D2000048430 /* PalmVisionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PalmVisionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		876F55CB2AC11D2000048430 /* PalmVisionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalmVisionUITests.swift; sourceTree = "<group>"; };
 		876F55CD2AC11D2000048430 /* PalmVisionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalmVisionUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		87BD3EF82AD583CC00EB4329 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
 		87C0F63C2AD22A28000BAB3C /* UiImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiImageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,6 +107,7 @@
 				876F55B42AC11D2000048430 /* Assets.xcassets */,
 				876F55B62AC11D2000048430 /* Preview Content */,
 				87C0F63C2AD22A28000BAB3C /* UiImageExtension.swift */,
+				87BD3EF82AD583CC00EB4329 /* ImageViewModel.swift */,
 			);
 			path = PalmVision;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				876F55B32AC11D1E00048430 /* ContentView.swift in Sources */,
+				87BD3EF92AD583CC00EB4329 /* ImageViewModel.swift in Sources */,
 				876F55B12AC11D1E00048430 /* PalmVisionApp.swift in Sources */,
 				8724D6512AD1D00C004A497D /* best.mlpackage in Sources */,
 				87C0F63D2AD22A28000BAB3C /* UiImageExtension.swift in Sources */,
@@ -355,7 +359,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -409,7 +413,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -437,6 +441,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -469,6 +474,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
