@@ -47,9 +47,12 @@ struct ContentView: View {
     
     let assetName = "palm"
     let assetImage = UIImage(named: "palm")
+    var body: some View {
+        MapView()
+    }
    
     /// A body property for the app's UI.
-    var body: some View {
+    var bbody: some View {
         NavigationStack {
             VStack {
                 
