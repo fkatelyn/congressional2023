@@ -47,12 +47,12 @@ struct ContentView: View {
     
     let assetName = "palm"
     let assetImage = UIImage(named: "palm")
-    var body: some View {
+    var xbody: some View {
         MapView()
     }
    
     /// A body property for the app's UI.
-    var bbody: some View {
+    var body: some View {
         NavigationStack {
             VStack {
                 
@@ -276,9 +276,15 @@ struct ImageList: View {
             Spacer()
         } else {
             // Create a row for each selected photo in the picker.
-            List(viewModel.attachments) { imageAttachment in
-                ImageAttachmentView(imageAttachment: imageAttachment)
-            }.listStyle(.plain)
+            List(viewModel.attachments, id: \.self) { imageAttachment in
+                NavigationLink(value: imageAttachment) {
+                    ImageAttachmentView(imageAttachment: imageAttachment)
+                }
+                    .navigationDestination(for: ImageAttachment.self) {
+                        item in ImageAttachmentView(imageAttachment: item)
+                    }
+            }
+            .listStyle(.plain)
         }
     }
 }
@@ -287,7 +293,7 @@ struct ImageList: View {
 struct ImageAttachmentView: View {
     
     /// An image that a person selects in the Photos picker.
-    @ObservedObject var imageAttachment: ImageViewModel.ImageAttachment
+    @ObservedObject var imageAttachment: ImageAttachment
     
     /// A container view for the row.
     var body: some View {
@@ -303,7 +309,7 @@ struct ImageAttachmentView: View {
             switch imageAttachment.imageStatus {
             case .finished(let image, let location):
                 image.resizable().aspectRatio(contentMode: .fit).frame(height: 100)
-                let locationString = "\(location?.coordinate.latitude), \(location?.coordinate.longitude)"
+                let locationString = "\(String(describing: location?.coordinate.latitude)), \(String(describing: location?.coordinate.longitude))"
                 Text(locationString)
                 //Text("longitude: \(location?.coordinate.longitude), latitude: \(location?.coordinate.latitude)")
             case .failed:

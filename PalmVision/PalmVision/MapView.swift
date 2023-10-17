@@ -14,6 +14,21 @@ struct LocationPoint: Identifiable {
     let coordinate: CLLocationCoordinate2D
 }
 
+
+struct DetailView: View {
+    let name: String
+
+    var body: some View {
+        NavigationLink {
+            Text("This is the detail view")
+                .navigationTitle("Levo")
+        } label: {
+            Label("Another Show Detail View", systemImage: "globe")
+        }
+        .navigationTitle("Mando")
+    }
+}
+
 struct MapView: View {
     /*
     @State private var region = MKCoordinateRegion(
@@ -31,7 +46,6 @@ struct MapView: View {
     
     @State private var selectedTag: Int?
     @State private var showSheet = false
-    
     var body: some View {
         VStack {
             Text(selectedTag == nil ? "Nothing Selected" : "\(selectedTag!)")
