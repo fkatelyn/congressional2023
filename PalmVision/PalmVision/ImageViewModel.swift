@@ -118,6 +118,9 @@ import PhotosUI
                         photoLocation = assetResults.firstObject?.location
                     }
                 }
+                
+                // Send it to the model for prediction
+                ObjectDetection.detect(uiImage)
                 imageStatus = .finished(Image(uiImage: uiImage), photoLocation)
             } else {
                 throw LoadingError.contentTypeNotSupported

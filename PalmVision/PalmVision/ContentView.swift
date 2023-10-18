@@ -10,11 +10,13 @@ import PhotosUI
 import CoreML
 import Vision
 
+/*
 struct Observation {
     let label: String
     let confidence: VNConfidence
     let boundingBox: CGRect
 }
+ */
 
 struct ContentView: View {
     @State private var avatarItem: PhotosPickerItem?

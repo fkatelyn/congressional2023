@@ -17,6 +17,8 @@
 		876F55CC2AC11D2000048430 /* PalmVisionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F55CB2AC11D2000048430 /* PalmVisionUITests.swift */; };
 		876F55CE2AC11D2000048430 /* PalmVisionUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F55CD2AC11D2000048430 /* PalmVisionUITestsLaunchTests.swift */; };
 		8781ACBA2ADC96550080A17A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8781ACB92ADC96550080A17A /* MapView.swift */; };
+		87AEEED92ADF65B000059AE5 /* ObjectDetection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AEEED82ADF65B000059AE5 /* ObjectDetection.swift */; };
+		87AEEEDB2ADF67FA00059AE5 /* ObjectAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AEEEDA2ADF67FA00059AE5 /* ObjectAnalyzer.swift */; };
 		87BD3EF92AD583CC00EB4329 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BD3EF82AD583CC00EB4329 /* ImageViewModel.swift */; };
 		87C0F63D2AD22A28000BAB3C /* UiImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C0F63C2AD22A28000BAB3C /* UiImageExtension.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +53,8 @@
 		876F55CB2AC11D2000048430 /* PalmVisionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalmVisionUITests.swift; sourceTree = "<group>"; };
 		876F55CD2AC11D2000048430 /* PalmVisionUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalmVisionUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8781ACB92ADC96550080A17A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		87AEEED82ADF65B000059AE5 /* ObjectDetection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetection.swift; sourceTree = "<group>"; };
+		87AEEEDA2ADF67FA00059AE5 /* ObjectAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAnalyzer.swift; sourceTree = "<group>"; };
 		87BD3EF82AD583CC00EB4329 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
 		87C0F63C2AD22A28000BAB3C /* UiImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiImageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +115,8 @@
 				87C0F63C2AD22A28000BAB3C /* UiImageExtension.swift */,
 				87BD3EF82AD583CC00EB4329 /* ImageViewModel.swift */,
 				8781ACB92ADC96550080A17A /* MapView.swift */,
+				87AEEED82ADF65B000059AE5 /* ObjectDetection.swift */,
+				87AEEEDA2ADF67FA00059AE5 /* ObjectAnalyzer.swift */,
 			);
 			path = PalmVision;
 			sourceTree = "<group>";
@@ -272,7 +278,9 @@
 			files = (
 				876F55B32AC11D1E00048430 /* ContentView.swift in Sources */,
 				8781ACBA2ADC96550080A17A /* MapView.swift in Sources */,
+				87AEEED92ADF65B000059AE5 /* ObjectDetection.swift in Sources */,
 				87BD3EF92AD583CC00EB4329 /* ImageViewModel.swift in Sources */,
+				87AEEEDB2ADF67FA00059AE5 /* ObjectAnalyzer.swift in Sources */,
 				876F55B12AC11D1E00048430 /* PalmVisionApp.swift in Sources */,
 				8724D6512AD1D00C004A497D /* best.mlpackage in Sources */,
 				87C0F63D2AD22A28000BAB3C /* UiImageExtension.swift in Sources */,
@@ -439,6 +447,7 @@
 				DEVELOPMENT_TEAM = CTQ5C85MG6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photos to pick an image.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -472,6 +481,7 @@
 				DEVELOPMENT_TEAM = CTQ5C85MG6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photos to pick an image.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -502,7 +512,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CTQ5C85MG6;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fkatelyn.PalmVisionTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -522,7 +532,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = CTQ5C85MG6;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fkatelyn.PalmVisionTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
