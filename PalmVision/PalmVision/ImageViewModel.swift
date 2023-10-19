@@ -10,48 +10,6 @@ import PhotosUI
 
 
 @MainActor class ImageAttachment: ObservableObject, Identifiable {
-    
-    
-/*
-    //@State private var location: CLLocationCoordinate2D?
-    private func extractLocation(from image: UIImage) -> CLLocationCoordinate2D{
-        let options: [String: Any] = [kCGImageSourceShouldCache: false as CFBoolean]
-        if let imageData = image.jpegData(compressionQuality: 1.0),
-           let source = CGImageSourceCreateWithData(imageData as CFData, options as CFDictionary) {
-            let properties = CGImageSourceCopyPropertiesAtIndex(source, 0, nil) as NSDictionary?
-            if let gpsInfo = properties?[kCGImagePropertyGPSDictionary] as? [String: Any],
-               let latitude = gpsInfo[kCGImagePropertyGPSLatitude] as? CLLocationDegrees,
-               let longitude = gpsInfo[kCGImagePropertyGPSLongitude] as? CLLocationDegrees {
-                location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                print("Latitude: \(latitude), Longitude: \(longitude)")
-            } else {
-                print("GPS information not found in the selected photo.")
-            }
-        }
-    }
-    
-    private func extractLocation2(from image: UIImage) -> CLLocationCoordinate2D {
-        if let ciImage = CIImage(image: image) {
-            let options = [CIDetectorAccuracy: CIDetectorAccuracyHigh]
-            let context = CIContext(options: nil)
-            let features = CIDetector(ofType: CIDetectorTypeQRCode, context: context, options: options)
-            
-            if let feature = features?.features(in: ciImage).first as? CIQRCodeFeature,
-               let messageString = feature.messageString,
-               let data = messageString.data(using: .utf8),
-               let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-               let latitude = json["latitude"] as? CLLocationDegrees,
-               let longitude = json["longitude"] as? CLLocationDegrees {
-                var location: CLLocationCoordinate2D?
-                location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                print("Latitude: \(String(describing: location?.latitude)), Longitude: \(String(describing: location?.longitude))")
-                return location ?? kCLLocationCoordinate2DInvalid
-            }
-        }
-        return kCLLocationCoordinate2DInvalid
-    }
-*/
-    
     /// Statuses that indicate the app's progress in loading a selected photo.
     enum Status {
     
@@ -59,7 +17,7 @@ import PhotosUI
         case loading
         
         /// A status indicating that the app has loaded a photo.
-        case finished(Image, CLLocation?)
+        case finished(UIImage)
         
         /// A status indicating that the photo has failed to load.
         case failed(Error)
@@ -86,6 +44,9 @@ import PhotosUI
     
     /// A textual description for the photo.
     @Published var imageDescription: String = ""
+    @Published var imageLocationLat: String = ""
+    @Published var imageLocationLon: String = ""
+    @Published var imageAnalysis: Analysis = Analysis([])
     
     /// An identifier for the photo.
     nonisolated var id: String {
@@ -97,7 +58,7 @@ import PhotosUI
         self.pickerItem = pickerItem
     }
     
-    /// Loads the photo that the picker item features.
+    /// Loads the photo
     func loadImage() async {
         guard imageStatus == nil || imageStatus?.isFailed == true else {
             return
@@ -106,22 +67,25 @@ import PhotosUI
         do {
             if let data = try await pickerItem.loadTransferable(type: Data.self),
                let uiImage = UIImage(data: data) {
-                print("\(pickerItem.itemIdentifier)")
                 var photoLocation : CLLocation?
                 if pickerItem.itemIdentifier != nil {
                     let assetId = pickerItem.itemIdentifier!
                     let assetResults = PHAsset.fetchAssets(withLocalIdentifiers: [assetId], options: nil)
                     if assetResults.count != 0 {
-                        print("Creation date")
-                        print(assetResults.firstObject?.creationDate ?? "No date")
-                        print(assetResults.firstObject?.location?.coordinate ?? "No location")
                         photoLocation = assetResults.firstObject?.location
+                        imageLocationLat = String(photoLocation?.coordinate.latitude ?? 0)
+                        imageLocationLon = String(photoLocation?.coordinate.longitude ?? 0)
                     }
                 }
                 
                 // Send it to the model for prediction
-                ObjectDetection.detect(uiImage)
-                imageStatus = .finished(Image(uiImage: uiImage), photoLocation)
+                let observations = ObjectDetection.detect(uiImage)
+                imageStatus = .finished(uiImage)
+                imageAnalysis = Analysis(observations)
+                imageDescription = ""
+                if imageAnalysis.isHealthy() {
+                    imageDescription = "Healthy"
+                }
             } else {
                 throw LoadingError.contentTypeNotSupported
             }

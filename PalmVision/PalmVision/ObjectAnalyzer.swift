@@ -5,14 +5,21 @@
 //  Created by Katelyn Fritz on 10/17/23.
 //
 
-struct Analyze {
+class Analysis {
     let observations: [Observation]
+    var objectCounts: [ObjectLabel:Int] = [:]
+    var treeCountsText: String = ""
     
+    init(_ observations: [Observation]) {
+        self.observations = observations
+        self.objectCounts = self.countLabel(observations)
+        self.treeCountsText = String(treeCount())
+    }
 
     /// Count labels
     ///
     /// - Returns: The count of labels as a dictionary [Label:Int]
-    func countLabel(observations: [Observation]) -> [ObjectLabel:Int] {
+    func countLabel(_ observations: [Observation]) -> [ObjectLabel:Int] {
         var countLabel: [ObjectLabel:Int] = [:]
         for observation in observations {
             let label = ObjectLabel.from(observation: observation)
@@ -20,14 +27,17 @@ struct Analyze {
         }
         return countLabel
     }
+    
+    func treeCount() -> Int {
+        (self.objectCounts[.ganoderna] ?? 0) +
+        (self.objectCounts[.healthy] ?? 0) +
+        (self.objectCounts[.nitrogen] ?? 0)
+    }
 
     /// Check if the observation has more healthy trees
-    func isHealthy() -> Bool {
-        let countLabel = countLabel(observations: observations)
-        let healthy: Int = countLabel[.healthy] ?? 0
-        let malnutrition: Int = countLabel[.nitrogen] ?? 0
-        let ganoderna: Int = countLabel[.ganoderna] ?? 0
-        let total: Int = healthy + malnutrition + ganoderna
+    public func isHealthy() -> Bool {
+        let healthy: Int = objectCounts[.healthy] ?? 0
+        let total: Int = treeCount()
         let fraction: Float = Float(healthy) / Float(total == 0 ? 1 : total)
         return fraction >= 0.5
     }

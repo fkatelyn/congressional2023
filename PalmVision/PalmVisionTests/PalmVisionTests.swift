@@ -26,10 +26,17 @@ final class PalmVisionTests: XCTestCase {
     
     // Test the countLabel function
     func testCountLabel() {
-        let analyze = Analyze(observations: sampleObservations)
+        let analyze = Analysis(observations: sampleObservations)
         let labelCounts = analyze.countLabel(observations: sampleObservations)
         let expectedHealthyCount = 2
         XCTAssertEqual(labelCounts[.healthy]!, expectedHealthyCount, "Healthy count mismatch!")
+        XCTAssertEqual(analyze.isHealthy(), true, "Healthy check mismatch!")
+    }
+
+    func testCountZeroLabel() {
+        let obs: [Observation] = []
+        let analyze = Analysis(observations: obs)
+        XCTAssertEqual(analyze.isHealthy(), false, "Healthy check mismatch!")
     }
 
     func testPerformanceExample() throws {

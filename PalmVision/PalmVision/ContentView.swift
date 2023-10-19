@@ -10,50 +10,12 @@ import PhotosUI
 import CoreML
 import Vision
 
-/*
-struct Observation {
-    let label: String
-    let confidence: VNConfidence
-    let boundingBox: CGRect
-}
- */
-
 struct ContentView: View {
-    @State private var avatarItem: PhotosPickerItem?
-    @State private var avatarImage: Image?
-    
-    @State private var isImagePickerShown: Bool = false
-    @State private var selectedImage: PhotosPickerItem?
-    @State private var selectedUiImage: UIImage?
-    
-    @State private var detectedObjects: [Observation] = []
-    
-    
     @StateObject private var viewModel = ImageViewModel()
-
-
-
-    let compiledModel = try! best(configuration: MLModelConfiguration())
-    private var overlayView: some View {
-        GeometryReader { geometry in
-            Path { path in
-                for observation in detectedObjects {
-                    let rect = VNImageRectForNormalizedRect(observation.boundingBox, Int(geometry.size.width), Int(geometry.size.height))
-                    let cgRect = CGRect(x: rect.origin.x, y: geometry.size.height - rect.origin.y - rect.size.height, width: rect.size.width, height: rect.size.height)
-                    path.addRect(cgRect)
-                }
-            }
-            .stroke(Color.red, lineWidth: 2)
-        }
-    }
-    
-    let assetName = "palm"
-    let assetImage = UIImage(named: "palm")
-    var xbody: some View {
+   var mapbody: some View {
         MapView()
     }
    
-    /// A body property for the app's UI.
     var body: some View {
         NavigationStack {
             VStack {
@@ -89,174 +51,6 @@ struct ContentView: View {
             .ignoresSafeArea(.keyboard)
         }
     }
-
-    @State private var location: CLLocationCoordinate2D?
-
-    private func extractLocation(from image: UIImage) {
-        if let ciImage = CIImage(image: image) {
-            let options = [CIDetectorAccuracy: CIDetectorAccuracyHigh]
-            let context = CIContext(options: nil)
-            let features = CIDetector(ofType: CIDetectorTypeQRCode, context: context, options: options)
-            
-            if let feature = features?.features(in: ciImage).first as? CIQRCodeFeature,
-               let messageString = feature.messageString,
-               let data = messageString.data(using: .utf8),
-               let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-               let latitude = json["latitude"] as? CLLocationDegrees,
-               let longitude = json["longitude"] as? CLLocationDegrees {
-                location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-                print("Latitude: \(latitude), Longitude: \(longitude)")
-            }
-        }
-    }
-    
-    var abody: some View {
-        VStack {
-            
-            VStack(spacing: 20) {
-                Image(assetName)
-                    .resizable()
-                    .scaledToFit()
-                    .overlay(overlayView)
-                /*
-                
-                if let img = selectedUiImage {
-                    Image(uiImage: img)
-                        .resizable()
-                        .scaledToFit()
-                        .overlay(overlayView)
-                }
-                 */
-                Button(
-                    action: { isImagePickerShown = true }
-                ) {
-                    Text("Pick Image using PhotosPicker")
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(8)
-                }
-            }
-            
-            .photosPicker(isPresented: $isImagePickerShown,
-                          selection: $selectedImage,
-                          matching: .images,
-                          photoLibrary: .shared())
-            .onChange(of: selectedImage) { _, _ in
-                Task {
-                    if let data = try? await selectedImage?.loadTransferable(type: Data.self) {
-                        if let uiImage = UIImage(data: data) {
-                            self.selectedUiImage = uiImage
-                            extractLocation(from: uiImage)
-                            return
-                        }
-                    }
-                    
-                    print("Failed")
-                }         
-            }
-            Button("Predict") {
-                let mlModel = compiledModel.model
-                guard let coreMlModel = try? VNCoreMLModel(for: mlModel) else { return }
-                let request = VNCoreMLRequest(model: coreMlModel) {
-                    request, error in
-                    guard let results = request.results as? [VNRecognizedObjectObservation] else {
-                        return
-                    }
-
-                    detectedObjects = results.map { result in
-                        guard let label = result.labels.first?.identifier else {
-                            return Observation(label: "", confidence: VNConfidence.zero, boundingBox: .zero)
-                        }
-                        let confidence = result.labels.first?.confidence ?? 0.0
-                        let boundingBox = result.boundingBox
-                        print("\(label) \(confidence)")
-                        return Observation(label: label, confidence: confidence, boundingBox: boundingBox)
-                    }
-                }
-                //guard let image = selectedUiImage,
-                guard let image = UIImage(named: assetName),
-                      let cgImage = image.cgImage else { return }
-                let requestHandler = VNImageRequestHandler(cgImage: cgImage)
-                do {
-                    try requestHandler.perform([request])
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
-            /*{ result in
-                switch result {
-                case .success(let photos):
-                    // For simplicity, taking the first image. You can handle multiple images if needed.
-                    if let firstPhoto = photos.first {
-                        // Requesting the UIImage representation of the photo.
-                        firstPhoto.requestUIImage { uiImage in
-                            self.selectedUiImage = uiImage
-                        }
-                    }
-                case .failure(let error):
-                    // Handle any errors here.
-                    print("Error picking photo: \(error)")
-                }
-            }
-             */
-             
-        
-            VStack {
-                PhotosPicker("Select avatar", selection: $avatarItem, matching: .images)
-                
-                if let avatarImage {
-                    avatarImage
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 300, height: 300)
-                    
-                }
-            }
-            .onChange(of: avatarItem) {
-                _, _ in
-                Task {
-                    if let data = try? await avatarItem?.loadTransferable(type: Data.self) {
-                        if let uiImage = UIImage(data: data) {
-                            avatarImage = Image(uiImage: uiImage)
-                            return
-                        }
-                    }
-                    
-                    print("Failed")
-                }
-            }
-            HStack(alignment: .center, spacing: 10) {
-                // Body/Bold
-                Text("Image")
-                  .font(
-                    Font.custom("SF Pro Text", size: 17)
-                      .weight(.semibold)
-                  )
-                  .multilineTextAlignment(.center)
-                  .foregroundColor(.white)
-            }
-            .padding(.horizontal, 20)
-            .padding(.vertical, 14)
-            .background(Color(red: 0, green: 0.48, blue: 1))
-            .cornerRadius(14)
-            
-            HStack(alignment: .center, spacing: 10) {
-                // Body/Bold
-                Text("Video")
-                  .font(
-                    Font.custom("SF Pro Text", size: 17)
-                      .weight(.semibold)
-                  )
-                  .multilineTextAlignment(.center)
-                  .foregroundColor(.white)
-            }
-            .padding(.horizontal, 20)
-            .padding(.vertical, 14)
-            .background(Color(red: 0, green: 0.48, blue: 1))
-            .cornerRadius(14)
-        }
-    }
 }
 
 
@@ -283,7 +77,7 @@ struct ImageList: View {
                     ImageAttachmentView(imageAttachment: imageAttachment)
                 }
                     .navigationDestination(for: ImageAttachment.self) {
-                        item in ImageAttachmentView(imageAttachment: item)
+                        item in ObjectAnalysisView(imageAttachment: item)
                     }
             }
             .listStyle(.plain)
@@ -302,18 +96,21 @@ struct ImageAttachmentView: View {
         HStack {
             
             // Define text that describes a selected photo.
-            TextField("Image Description", text: $imageAttachment.imageDescription)
+            VStack(alignment: .leading) {
+                TextField("Image Description", text: $imageAttachment.imageDescription)
+                Text("Lat \(imageAttachment.imageLocationLat)")
+                Text("Lon \(imageAttachment.imageLocationLon)")
+                Text("Trees \(imageAttachment.imageAnalysis.treeCountsText)")
+            }
             
             // Add space after the description.
             Spacer()
             
             // Display the image that the text describes.
             switch imageAttachment.imageStatus {
-            case .finished(let image, let location):
+            case .finished(let uiImage):
+                let image = Image(uiImage: uiImage)
                 image.resizable().aspectRatio(contentMode: .fit).frame(height: 100)
-                let locationString = "\(String(describing: location?.coordinate.latitude)), \(String(describing: location?.coordinate.longitude))"
-                Text(locationString)
-                //Text("longitude: \(location?.coordinate.longitude), latitude: \(location?.coordinate.latitude)")
             case .failed:
                 Image(systemName: "exclamationmark.triangle.fill")
             default:
