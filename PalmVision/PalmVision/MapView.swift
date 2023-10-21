@@ -30,6 +30,28 @@ struct DetailView: View {
 }
 
 struct MapView: View {
+    @ObservedObject var imagesModel: ImageViewModel
+    var locations: [LocationPoint] {
+        var computedLocations: [LocationPoint] = []
+   
+        for attachment in imagesModel.attachments {
+            if attachment.imageLocationLat == "0" || attachment.imageLocationLat == "" ||
+                attachment.imageLocationLon == "0" || attachment.imageLocationLon == "" {
+                
+            } else {
+                computedLocations.append(
+                    LocationPoint(coordinate: CLLocationCoordinate2D(
+                        latitude: Double(attachment.imageLocationLat) ?? 0,
+                        longitude: Double(attachment.imageLocationLon) ?? 0)))
+            }
+        }
+        return computedLocations
+     }
+    
+    
+    @State private var selectedTag: Int?
+    @State private var showSheet = false
+     
     /*
     @State private var region = MKCoordinateRegion(
         center: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194), // Default to San Francisco for this example
@@ -38,19 +60,12 @@ struct MapView: View {
      */
     
     // Sample data: Replace this with your list of CLLocation
-    let locations: [LocationPoint] = [
-        LocationPoint(coordinate: CLLocationCoordinate2D(latitude: 37.7349, longitude: -122.4184)),
-        LocationPoint(coordinate: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194))
-        // Add more locations as needed
-    ]
-    
-    @State private var selectedTag: Int?
-    @State private var showSheet = false
-    var body: some View {
+   var body: some View {
         VStack {
             Text(selectedTag == nil ? "Nothing Selected" : "\(selectedTag!)")
                 .bold()
                 .padding()
+            let foo = 0
             Map(selection: $selectedTag) {
                 ForEach(locations.indices, id: \.self) {
                     index in Marker("palm", coordinate: locations[index].coordinate)
@@ -62,9 +77,9 @@ struct MapView: View {
                     
                 }
             }
-            .mapStyle(.standard(elevation: .realistic))
+            .mapStyle(.imagery(elevation: .realistic))
             .mapControls {
-                MapUserLocationButton()
+                //MapUserLocationButton()
                 MapCompass()
                 MapScaleView()
             }
@@ -90,9 +105,10 @@ struct MapView: View {
     }
 }
 
-
+/*
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
         MapView()
     }
 }
+*/

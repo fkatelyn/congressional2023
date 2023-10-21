@@ -12,10 +12,9 @@ import Vision
 
 struct ContentView: View {
     @StateObject private var viewModel = ImageViewModel()
-   var mapbody: some View {
-        MapView()
-    }
-   
+    
+    @State var showMap: Bool = false
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -46,6 +45,14 @@ struct ContentView: View {
                 //.photosPickerAccessoryVisibility(.hidden, edges: .all)
                 .ignoresSafeArea()
                 .frame(height: 200)
+                
+                Button("map view") {
+                    //MapView(imagesModel: viewModel)
+                    showMap.toggle()
+                }
+            }
+            .sheet(isPresented: $showMap) {
+                MapView(imagesModel: viewModel)
             }
             .navigationTitle("Aerial View")
             .ignoresSafeArea(.keyboard)
