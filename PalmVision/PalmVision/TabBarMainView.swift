@@ -1,5 +1,5 @@
 //
-//  TabNavView.swift
+//  TabBarMainView.swift
 //  PalmVision
 //
 //  Created by Katelyn Fritz on 10/21/23.

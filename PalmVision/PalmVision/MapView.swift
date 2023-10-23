@@ -91,37 +91,47 @@ struct MapView: View {
                                 attachment.imageAnalysis.isHealthy() ? .green : .red)
                         .tag(index + 1)
                 }
-                /*
-                ForEach(locations.indices, id: \.self) {
-                    index in Marker("palm", coordinate: locations[index].coordinate)
-                        .tint(selectedTag == index + 1 ? .blue : .teal)
-                        .tag(index + 1)
-                }*/
             }
             .mapStyle(.imagery(elevation: .realistic))
             .mapControls {
-                //MapUserLocationButton()
                 MapCompass()
                 MapScaleView()
             }
             .onChange(of: selectedTag) {
-                showSheet = selectedTag != nil
+            }
+            /*
+            .background(
+                NavigationLink("", destination: ObjectAnalysisView(imageAttachment: imagesModel.attachments[selectedTag!-1] ), isActive: $showSheet)
+                    .hidden()
+            )
+            .navigationTitle("Map")*/
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                if selectedTag != nil {
+                    Button(action: {
+                        if selectedTag != nil {
+                            showSheet = true
+                        }
+                    }) {
+                        Image(systemName: "magnifyingglass")
+                    }
+                    .navigationDestination(isPresented: $showSheet) {
+                        if selectedTag != nil {
+                            ObjectAnalysisView(imageAttachment: imagesModel.attachments[selectedTag!-1])
+                        }
+                    }
+                }
             }
         }
+       /*
         .sheet(isPresented: $showSheet) {
             Text("FOO")
             Button("Dismiss") {
                 showSheet = false
             }
-        }
-        /*
-        .onTapGesture(count: 1) {
-            if selectedTag != nil {
-                showSheet.toggle()
-            }
-        }
-         */
-    }
+        }*/
+   }
 }
 
 /*
