@@ -8,7 +8,7 @@
 import SwiftUI
 import PhotosUI
 
-
+/// Most of the code are taken from WWDC 2023 PhotosPicker example
 @MainActor class ImageAttachment: ObservableObject, Identifiable {
     /// Statuses that indicate the app's progress in loading a selected photo.
     enum Status {

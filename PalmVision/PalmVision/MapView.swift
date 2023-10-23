@@ -31,6 +31,14 @@ struct DetailView: View {
 
 struct MapView: View {
     @ObservedObject var imagesModel: ImageViewModel
+    
+    func attachmentToLocation(_ attachment: ImageAttachment) -> LocationPoint {
+        print("\(attachment.imageLocationLat) \(attachment.imageLocationLon)")
+        return LocationPoint(coordinate: CLLocationCoordinate2D(
+            latitude: Double(attachment.imageLocationLat) ?? 0,
+            longitude: Double(attachment.imageLocationLon) ?? 0))
+    }
+    
     var locations: [LocationPoint] {
         var computedLocations: [LocationPoint] = []
    
@@ -51,6 +59,14 @@ struct MapView: View {
     
     @State private var selectedTag: Int?
     @State private var showSheet = false
+   /*
+    var selectedTag: Int? {
+        get { _selectedTag }
+        set {
+            showSheet.toggle()
+            _selectedTag = newValue
+        }
+    }*/
      
     /*
     @State private var region = MKCoordinateRegion(
@@ -65,17 +81,22 @@ struct MapView: View {
             Text(selectedTag == nil ? "Nothing Selected" : "\(selectedTag!)")
                 .bold()
                 .padding()
-            let foo = 0
             Map(selection: $selectedTag) {
+                ForEach(imagesModel.attachments.indices, id: \.self) {
+                    index in 
+                    let attachment = imagesModel.attachments[index]
+                    let location = attachmentToLocation(attachment)
+                    Marker("palm", coordinate: location.coordinate)
+                        .tint(selectedTag == index + 1 ? .blue :
+                                attachment.imageAnalysis.isHealthy() ? .green : .red)
+                        .tag(index + 1)
+                }
+                /*
                 ForEach(locations.indices, id: \.self) {
                     index in Marker("palm", coordinate: locations[index].coordinate)
                         .tint(selectedTag == index + 1 ? .blue : .teal)
                         .tag(index + 1)
-                    MapCircle(center: locations[index].coordinate, radius: CLLocationDistance(175))
-                        .foregroundStyle(.teal.opacity(0.60))
-                        .mapOverlayLevel(level: .aboveRoads)
-                    
-                }
+                }*/
             }
             .mapStyle(.imagery(elevation: .realistic))
             .mapControls {
@@ -83,10 +104,8 @@ struct MapView: View {
                 MapCompass()
                 MapScaleView()
             }
-            .onTapGesture(count:2) {
-                if selectedTag != nil {
-                    showSheet.toggle()
-                }
+            .onChange(of: selectedTag) {
+                showSheet = selectedTag != nil
             }
         }
         .sheet(isPresented: $showSheet) {

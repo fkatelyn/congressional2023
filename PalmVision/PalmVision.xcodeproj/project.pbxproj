@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		8724D6512AD1D00C004A497D /* best.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 8724D6502AD1D00C004A497D /* best.mlpackage */; };
 		8724D6522AD1D00C004A497D /* best.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 8724D6502AD1D00C004A497D /* best.mlpackage */; };
+		872697242AE5CBCE004134FE /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872697232AE5CBCE004134FE /* ImageModifier.swift */; };
 		876F55B12AC11D1E00048430 /* PalmVisionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F55B02AC11D1E00048430 /* PalmVisionApp.swift */; };
-		876F55B32AC11D1E00048430 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F55B22AC11D1E00048430 /* ContentView.swift */; };
+		876F55B32AC11D1E00048430 /* AerialListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F55B22AC11D1E00048430 /* AerialListView.swift */; };
 		876F55B52AC11D2000048430 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 876F55B42AC11D2000048430 /* Assets.xcassets */; };
 		876F55B82AC11D2000048430 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 876F55B72AC11D2000048430 /* Preview Assets.xcassets */; };
 		876F55C22AC11D2000048430 /* PalmVisionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F55C12AC11D2000048430 /* PalmVisionTests.swift */; };
@@ -22,6 +23,8 @@
 		87AEEEDD2AE10B1600059AE5 /* ObjectAnalysisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AEEEDC2AE10B1600059AE5 /* ObjectAnalysisView.swift */; };
 		87AEEEDF2AE113E900059AE5 /* ObjectDetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AEEEDE2AE113E900059AE5 /* ObjectDetectionView.swift */; };
 		87AEEEE12AE1265300059AE5 /* RandomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87AEEEE02AE1265300059AE5 /* RandomView.swift */; };
+		87B5079C2AE4813D005BDBEA /* TabBarMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B5079B2AE4813D005BDBEA /* TabBarMainView.swift */; };
+		87B5079E2AE4A9E7005BDBEA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B5079D2AE4A9E7005BDBEA /* ContentView.swift */; };
 		87BD3EF92AD583CC00EB4329 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BD3EF82AD583CC00EB4329 /* ImageViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,9 +47,10 @@
 
 /* Begin PBXFileReference section */
 		8724D6502AD1D00C004A497D /* best.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = best.mlpackage; sourceTree = "<group>"; };
+		872697232AE5CBCE004134FE /* ImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModifier.swift; sourceTree = "<group>"; };
 		876F55AD2AC11D1E00048430 /* PalmVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PalmVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		876F55B02AC11D1E00048430 /* PalmVisionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalmVisionApp.swift; sourceTree = "<group>"; };
-		876F55B22AC11D1E00048430 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		876F55B22AC11D1E00048430 /* AerialListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerialListView.swift; sourceTree = "<group>"; };
 		876F55B42AC11D2000048430 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		876F55B72AC11D2000048430 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		876F55BD2AC11D2000048430 /* PalmVisionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PalmVisionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +64,8 @@
 		87AEEEDC2AE10B1600059AE5 /* ObjectAnalysisView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectAnalysisView.swift; sourceTree = "<group>"; };
 		87AEEEDE2AE113E900059AE5 /* ObjectDetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectionView.swift; sourceTree = "<group>"; };
 		87AEEEE02AE1265300059AE5 /* RandomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomView.swift; sourceTree = "<group>"; };
+		87B5079B2AE4813D005BDBEA /* TabBarMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMainView.swift; sourceTree = "<group>"; };
+		87B5079D2AE4A9E7005BDBEA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		87BD3EF82AD583CC00EB4329 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,7 +119,7 @@
 			children = (
 				8724D6502AD1D00C004A497D /* best.mlpackage */,
 				876F55B02AC11D1E00048430 /* PalmVisionApp.swift */,
-				876F55B22AC11D1E00048430 /* ContentView.swift */,
+				876F55B22AC11D1E00048430 /* AerialListView.swift */,
 				87AEEEE02AE1265300059AE5 /* RandomView.swift */,
 				87AEEEDC2AE10B1600059AE5 /* ObjectAnalysisView.swift */,
 				87AEEEDE2AE113E900059AE5 /* ObjectDetectionView.swift */,
@@ -123,6 +129,9 @@
 				8781ACB92ADC96550080A17A /* MapView.swift */,
 				87AEEED82ADF65B000059AE5 /* ObjectDetection.swift */,
 				87AEEEDA2ADF67FA00059AE5 /* ObjectAnalyzer.swift */,
+				87B5079B2AE4813D005BDBEA /* TabBarMainView.swift */,
+				87B5079D2AE4A9E7005BDBEA /* ContentView.swift */,
+				872697232AE5CBCE004134FE /* ImageModifier.swift */,
 			);
 			path = PalmVision;
 			sourceTree = "<group>";
@@ -283,14 +292,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				87AEEEE12AE1265300059AE5 /* RandomView.swift in Sources */,
-				876F55B32AC11D1E00048430 /* ContentView.swift in Sources */,
+				876F55B32AC11D1E00048430 /* AerialListView.swift in Sources */,
 				8781ACBA2ADC96550080A17A /* MapView.swift in Sources */,
 				87AEEED92ADF65B000059AE5 /* ObjectDetection.swift in Sources */,
 				87AEEEDD2AE10B1600059AE5 /* ObjectAnalysisView.swift in Sources */,
 				87BD3EF92AD583CC00EB4329 /* ImageViewModel.swift in Sources */,
 				87AEEEDB2ADF67FA00059AE5 /* ObjectAnalyzer.swift in Sources */,
+				872697242AE5CBCE004134FE /* ImageModifier.swift in Sources */,
 				876F55B12AC11D1E00048430 /* PalmVisionApp.swift in Sources */,
 				87AEEEDF2AE113E900059AE5 /* ObjectDetectionView.swift in Sources */,
+				87B5079E2AE4A9E7005BDBEA /* ContentView.swift in Sources */,
+				87B5079C2AE4813D005BDBEA /* TabBarMainView.swift in Sources */,
 				8724D6512AD1D00C004A497D /* best.mlpackage in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

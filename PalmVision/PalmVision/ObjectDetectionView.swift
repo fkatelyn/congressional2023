@@ -18,7 +18,7 @@ struct ObjectDetectionView: View {
             Path { path in
                 for observation in detectedObjects {
                     let rect = VNImageRectForNormalizedRect(observation.boundingBox, Int(geometry.size.width), Int(geometry.size.height))
-                    let cgRect = CGRect(x: rect.origin.x, y: geometry.size.height - rect.origin.y - rect.size.height, width: rect.size.width, height: rect.size.height)
+                    let cgRect = CGRect(x: rect.origin.x, y: (geometry.size.height - rect.origin.y - rect.size.height), width: rect.size.width, height: rect.size.height)
                     path.addRect(cgRect)
                 }
             }
