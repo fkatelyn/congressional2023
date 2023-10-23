@@ -151,8 +151,7 @@ struct ImageAttachmentView: View {
 }
 
 
-struct AerialListView_Previews: PreviewProvider {
-    static var previews: some View {
-        AerialListView(viewModel: ImageViewModel())
-    }
+#Preview
+{
+    AerialListView(viewModel: ImageViewModel())
 }

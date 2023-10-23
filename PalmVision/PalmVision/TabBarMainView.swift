@@ -39,28 +39,28 @@ struct TabBarMainView: View {
                 Text("Map")
             }
             .tag(1)
-            /*
             
-            NavigationView {
+            NavigationStack {
+                /*
                 NavigationLink("Go to Browse Detail", destination: Text("Browse Detail View"))
                     .navigationBarTitle("Browse", displayMode: .inline)
+                 */
             }
             .tabItem {
                 Image(systemName: "play")
-                Text("Browse")
+                Text("Video")
             }
             .tag(2)
             
-            NavigationView {
-                NavigationLink("Go to Radio Detail", destination: Text("Radio Detail View"))
-                    .navigationBarTitle("Radio", displayMode: .inline)
+            NavigationStack {
             }
             .tabItem {
                 Image(systemName: "message")
-                Text("Radio")
+                Text("DrDrone")
             }
             .tag(3)
             
+            /*
             NavigationView {
                 NavigationLink("Go to Search Detail", destination: Text("Search Detail View"))
                     .navigationBarTitle("Search", displayMode: .inline)
@@ -75,8 +75,7 @@ struct TabBarMainView: View {
     }
 }
 
-struct TabBarMainView_Previews: PreviewProvider {
-    static var previews: some View {
-        TabBarMainView()
-    }
+#Preview
+{
+    TabBarMainView()
 }

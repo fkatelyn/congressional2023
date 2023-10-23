@@ -46,9 +46,8 @@ struct ObjectAnalysisView: View {
         }
     }
 }
-/*
- struct ObjectDetectView_Previews: PreviewProvider {
- static var previews: some View {
- ObjectDetectView(imageAttachment: ImageAttachment(PhotosPickerItem()))
- }
-*/
+
+#Preview
+{
+    ObjectAnalysisView(imageAttachment: ImageAttachment(PhotosPickerItem(itemIdentifier: "")))
+}
