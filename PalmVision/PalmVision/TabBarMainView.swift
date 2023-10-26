@@ -41,10 +41,7 @@ struct TabBarMainView: View {
             .tag(1)
             
             NavigationStack {
-                /*
-                NavigationLink("Go to Browse Detail", destination: Text("Browse Detail View"))
-                    .navigationBarTitle("Browse", displayMode: .inline)
-                 */
+                VideoDetectionView()
             }
             .tabItem {
                 Image(systemName: "play")
@@ -53,6 +50,7 @@ struct TabBarMainView: View {
             .tag(2)
             
             NavigationStack {
+                ChatView()
             }
             .tabItem {
                 Image(systemName: "message")

@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Vision
+import PhotosUI
 
 struct ObjectDetectionView: View {
     @ObservedObject var imageAttachment: ImageAttachment
@@ -25,4 +26,9 @@ struct ObjectDetectionView: View {
             .stroke(Color.red, lineWidth: 2)
         }
     }
+}
+
+#Preview
+{
+    ObjectDetectionView(imageAttachment: ImageAttachment(PhotosPickerItem(itemIdentifier: "")))
 }

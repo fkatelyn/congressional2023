@@ -95,12 +95,12 @@ struct RandomView: View {
 
                     detectedObjects = results.map { result in
                         guard let label = result.labels.first?.identifier else {
-                            return Observation(label: "", confidence: VNConfidence.zero, boundingBox: .zero)
+                            return Observation(id: result.uuid, label: "", confidence: VNConfidence.zero, boundingBox: .zero)
                         }
                         let confidence = result.labels.first?.confidence ?? 0.0
                         let boundingBox = result.boundingBox
                         print("\(label) \(confidence)")
-                        return Observation(label: label, confidence: confidence, boundingBox: boundingBox)
+                        return Observation(id: result.uuid, label: label, confidence: confidence, boundingBox: boundingBox)
                     }
                 }
                 //guard let image = selectedUiImage,
