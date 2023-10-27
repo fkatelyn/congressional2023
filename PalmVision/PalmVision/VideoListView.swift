@@ -9,6 +9,7 @@ import PhotosUI
 import CoreML
 import Vision
 
+
 struct VideoListView: View {
     @ObservedObject var viewModel: VideoViewModel
     

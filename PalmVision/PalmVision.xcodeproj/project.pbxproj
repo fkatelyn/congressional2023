@@ -30,7 +30,6 @@
 		87B5079E2AE4A9E7005BDBEA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B5079D2AE4A9E7005BDBEA /* ContentView.swift */; };
 		87BD3EF92AD583CC00EB4329 /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BD3EF82AD583CC00EB4329 /* ImageViewModel.swift */; };
 		87FCB28C2AE6ED320074FC77 /* world.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 87FCB28B2AE6ED320074FC77 /* world.mp4 */; };
-		87FCB2902AE726DE0074FC77 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FCB28F2AE726DE0074FC77 /* VideoView.swift */; };
 		87FCB2922AE878760074FC77 /* VideoDetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87FCB2912AE878760074FC77 /* VideoDetectionView.swift */; };
 /* End PBXBuildFile section */
 
@@ -77,7 +76,6 @@
 		87B5079D2AE4A9E7005BDBEA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		87BD3EF82AD583CC00EB4329 /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
 		87FCB28B2AE6ED320074FC77 /* world.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = world.mp4; sourceTree = "<group>"; };
-		87FCB28F2AE726DE0074FC77 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		87FCB2912AE878760074FC77 /* VideoDetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDetectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,7 +144,6 @@
 				87B5079B2AE4813D005BDBEA /* TabBarMainView.swift */,
 				87B5079D2AE4A9E7005BDBEA /* ContentView.swift */,
 				872697232AE5CBCE004134FE /* ImageModifier.swift */,
-				87FCB28F2AE726DE0074FC77 /* VideoView.swift */,
 				87FCB2912AE878760074FC77 /* VideoDetectionView.swift */,
 				874059BD2AEA09D900385A1D /* DetectionView.swift */,
 				871D11AD2AE635D500BADF3C /* ChatView.swift */,
@@ -324,7 +321,6 @@
 				87AEEED92ADF65B000059AE5 /* ObjectDetection.swift in Sources */,
 				874059C02AEA3E0D00385A1D /* VideoListView.swift in Sources */,
 				87AEEEDD2AE10B1600059AE5 /* ObjectAnalysisView.swift in Sources */,
-				87FCB2902AE726DE0074FC77 /* VideoView.swift in Sources */,
 				87BD3EF92AD583CC00EB4329 /* ImageViewModel.swift in Sources */,
 				87AEEEDB2ADF67FA00059AE5 /* ObjectAnalyzer.swift in Sources */,
 				871D11AE2AE635D500BADF3C /* ChatView.swift in Sources */,

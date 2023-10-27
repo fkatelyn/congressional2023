@@ -13,6 +13,7 @@ import Combine
 import Vision
 
 
+
 class VideoDetection: ObservableObject {
     var isPlayable: Bool = false
     var errorMessage: String? = ""
@@ -229,7 +230,7 @@ struct VideoDetectionView: View {
         }
     }
 }
-/*
+
 #Preview {
-    VideoDetectionView(videoUrl: URL("http://hello.com"))
-}*/
+    VideoDetectionView(videoUrl: Bundle.main.url(forResource: "world", withExtension: "mp4")!)
+}

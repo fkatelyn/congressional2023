@@ -8,6 +8,26 @@
 import SwiftUI
 import PhotosUI
 
+struct Movie: Transferable {
+    let url: URL
+    
+    static var transferRepresentation: some TransferRepresentation {
+        FileRepresentation(contentType: .movie) { movie in
+            SentTransferredFile(movie.url)
+        } importing: { receivedData in
+            let fileName = receivedData.file.lastPathComponent
+            let copy: URL = FileManager.default.temporaryDirectory.appendingPathComponent(fileName)
+            
+            if FileManager.default.fileExists(atPath: copy.path) {
+                try FileManager.default.removeItem(at: copy)
+            }
+            
+            try FileManager.default.copyItem(at: receivedData.file, to: copy)
+            return .init(url: copy)
+        }
+    }
+}
+
 @MainActor class VideoAttachment: ObservableObject, Identifiable {
     /// Statuses that indicate the app's progress in loading a selected photo.
     enum Status {
@@ -80,8 +100,6 @@ extension VideoAttachment : Hashable {
         lhs.pickerItem.itemIdentifier == rhs.pickerItem.itemIdentifier
     }
 }
-
-
 
 /// A view model that integrates a Photos picker.
 @MainActor final class VideoViewModel: ObservableObject {
