@@ -2,7 +2,8 @@
 //  VideoViewModel.swift
 //  PalmVision
 //
-//  Created by Katelyn Fritz on 10/25/23.
+//  Source: Apple WWDC 2023 PhotosPicker example
+//  Modified by Katelyn Fritz on 10/25/23.
 //
 
 import SwiftUI
