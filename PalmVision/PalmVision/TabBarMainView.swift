@@ -10,6 +10,7 @@ import SwiftUI
 
 struct TabBarMainView: View {
     @StateObject private var viewModel = ImageViewModel()
+    @StateObject private var videoViewModel = VideoViewModel()
     @State private var selectedTab = 0
     
     var body: some View {
@@ -41,7 +42,7 @@ struct TabBarMainView: View {
             .tag(1)
             
             NavigationStack {
-                VideoDetectionView()
+                VideoListView(viewModel: videoViewModel)
             }
             .tabItem {
                 Image(systemName: "play")

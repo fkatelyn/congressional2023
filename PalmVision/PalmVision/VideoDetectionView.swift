@@ -215,6 +215,7 @@ class VideoDetection: ObservableObject {
 }
 
 struct VideoDetectionView: View {
+    @State var videoUrl: URL
     @StateObject private var videoDetection = VideoDetection()
     var body: some View {
         Group {
@@ -224,11 +225,11 @@ struct VideoDetectionView: View {
             DetectionView(videoDetection.frameObjects, videoSize: videoDetection.size)
         }
         .onAppear() {
-            videoDetection.videoURL = Bundle.main.url(forResource: "world", withExtension: "mp4")!
+            videoDetection.videoURL = videoUrl
         }
     }
 }
-
+/*
 #Preview {
-    VideoDetectionView()
-}
+    VideoDetectionView(videoUrl: URL("http://hello.com"))
+}*/

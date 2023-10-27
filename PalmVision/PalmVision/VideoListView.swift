@@ -1,26 +1,22 @@
 //
-//  ContentView.swift
+//  VideoListView.swift
 //  PalmVision
 //
-//  Created by Katelyn Fritz on 6/24/23.
+//  Created by Katelyn Fritz on 10/25/23.
 //
-
 import SwiftUI
 import PhotosUI
 import CoreML
 import Vision
 
-struct AerialListView: View {
-    @ObservedObject var viewModel: ImageViewModel
-    @State var showMap: Bool = false
-    @State var showPhotosPicker: Bool = false
+struct VideoListView: View {
+    @ObservedObject var viewModel: VideoViewModel
     
     var body: some View {
         VStack {
-            // Define a list for photos and descriptions.
-            ImageList(viewModel: viewModel)
+            VideoList(viewModel: viewModel)
         }
-        .navigationTitle("Aerial View")
+        .navigationTitle("Video View")
         .ignoresSafeArea(.keyboard)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
@@ -31,7 +27,7 @@ struct AerialListView: View {
                         
                         // Enable the app to dynamically respond to user adjustments.
                         selectionBehavior: .continuousAndOrdered,
-                        matching: .images,
+                        matching: .videos,
                         preferredItemEncoding: .current,
                         photoLibrary: .shared()
                     ) {
@@ -45,10 +41,10 @@ struct AerialListView: View {
 
 
 /// A view that lists selected photos and their descriptions.
-struct ImageList: View {
+struct VideoList: View {
     
     /// A view model for the list.
-    @ObservedObject var viewModel: ImageViewModel
+    @ObservedObject var viewModel: VideoViewModel
     
     /// A container view for the list.
     var body: some View {
@@ -62,12 +58,18 @@ struct ImageList: View {
             Spacer()
         } else {
             // Create a row for each selected photo in the picker.
-            List(viewModel.attachments, id: \.self) { imageAttachment in
-                NavigationLink(value: imageAttachment) {
-                    ImageAttachmentView(imageAttachment: imageAttachment)
+            List(viewModel.attachments, id: \.self) { videoAttachment in
+                NavigationLink(value: videoAttachment) {
+                    VideoAttachmentView(videoAttachment: videoAttachment)
                 }
-                .navigationDestination(for: ImageAttachment.self) {
-                    item in ObjectAnalysisView(imageAttachment: item)
+                .navigationDestination(for: VideoAttachment.self) {
+                    item in 
+                    switch item.videoStatus {
+                    case .loaded(let movie):
+                        VideoDetectionView(videoUrl: movie.url)
+                    default:
+                        Text("error")
+                    }
                 }
             }
             .listStyle(.plain)
@@ -76,10 +78,27 @@ struct ImageList: View {
 }
 
 /// A row item that displays a photo and a description.
-struct ImageAttachmentView: View {
+struct VideoAttachmentView: View {
     
     /// An image that a person selects in the Photos picker.
-    @ObservedObject var imageAttachment: ImageAttachment
+    @ObservedObject var videoAttachment: VideoAttachment
+                            
+    func getVideoThumbnail(url: URL) -> UIImage {
+        let asset = AVAsset(url: url)
+        let imageGenerator = AVAssetImageGenerator(asset: asset)
+        imageGenerator.appliesPreferredTrackTransform = true
+        
+        var time = asset.duration
+        time.value = min(time.value, 2)
+        
+        do {
+            let imageRef = try imageGenerator.copyCGImage(at: time, actualTime: nil)
+            return UIImage(cgImage: imageRef)
+        } catch {
+            print("Error generating thumbnail: \(error)")
+            return UIImage(systemName: "play")!
+        }
+    }
     
     /// A container view for the row.
     var body: some View {
@@ -87,17 +106,16 @@ struct ImageAttachmentView: View {
             
             // Define text that describes a selected photo.
             VStack(alignment: .leading) {
-                Text(imageAttachment.imageDescription)
-                Text("Trees: \(imageAttachment.imageAnalysis.treeCountsText)")
+                Text("Hello")
             }
             
             // Add space after the description.
             Spacer()
             
             // Display the image that the text describes.
-            switch imageAttachment.imageStatus {
-            case .finished(let uiImage):
-                let image = Image(uiImage: uiImage)
+            switch videoAttachment.videoStatus {
+            case .loaded(let movie):
+                let image = Image(uiImage: getVideoThumbnail(url: movie.url))
                 image.resizable().aspectRatio(contentMode: .fit).frame(height: 100)
             case .failed:
                 Image(systemName: "exclamationmark.triangle.fill")
@@ -106,7 +124,7 @@ struct ImageAttachmentView: View {
             }
         }.task {
             // Asynchronously display the photo.
-            await imageAttachment.loadImage()
+            await videoAttachment.loadVideo()
         }
     }
 }
@@ -114,5 +132,6 @@ struct ImageAttachmentView: View {
 
 #Preview
 {
-    AerialListView(viewModel: ImageViewModel())
+    VideoListView(viewModel: VideoViewModel())
 }
+

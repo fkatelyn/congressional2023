@@ -1,26 +1,24 @@
 //
-//  ImageViewModel.swift
+//  VideoViewModel.swift
 //  PalmVision
-
-//  Source: WWDC 2023 PhotosPicker example
-//  Modified by Katelyn Fritz on 10/10/23.
+//
+//  Created by Katelyn Fritz on 10/25/23.
 //
 
 import SwiftUI
 import PhotosUI
 
-@MainActor class ImageAttachment: ObservableObject, Identifiable {
+@MainActor class VideoAttachment: ObservableObject, Identifiable {
     /// Statuses that indicate the app's progress in loading a selected photo.
     enum Status {
+        
+        case unknown
     
-        /// A status indicating that the app has requested a photo.
         case loading
         
-        /// A status indicating that the app has loaded a photo.
-        case finished(UIImage)
+        case loaded(Movie)
         
-        /// A status indicating that the photo has failed to load.
-        case failed(Error)
+        case failed
         
         /// Determines whether the photo has failed to load.
         var isFailed: Bool {
@@ -40,13 +38,10 @@ import PhotosUI
     public let pickerItem: PhotosPickerItem
     
     /// A load progress for the photo.
-    @Published var imageStatus: Status?
+    @Published var videoStatus: Status?
     
     /// A textual description for the photo.
-    @Published var imageDescription: String = ""
-    @Published var imageLocationLat: String = ""
-    @Published var imageLocationLon: String = ""
-    @Published var imageAnalysis: Analysis = Analysis([])
+    @Published var videoDescription: String = ""
     
     /// An identifier for the photo.
     nonisolated var id: String {
@@ -59,48 +54,29 @@ import PhotosUI
     }
     
     /// Loads the photo
-    func loadImage() async {
-        guard imageStatus == nil || imageStatus?.isFailed == true else {
+    func loadVideo() async {
+        guard videoStatus == nil || videoStatus?.isFailed == true else {
             return
         }
-        imageStatus = .loading
+        videoStatus = .loading
         do {
-            if let data = try await pickerItem.loadTransferable(type: Data.self),
-               let uiImage = UIImage(data: data) {
-                var photoLocation : CLLocation?
-                if pickerItem.itemIdentifier != nil {
-                    let assetId = pickerItem.itemIdentifier!
-                    let assetResults = PHAsset.fetchAssets(withLocalIdentifiers: [assetId], options: nil)
-                    if assetResults.count != 0 {
-                        photoLocation = assetResults.firstObject?.location
-                        imageLocationLat = String(photoLocation?.coordinate.latitude ?? 0)
-                        imageLocationLon = String(photoLocation?.coordinate.longitude ?? 0)
-                    }
-                }
-                
-                // Send it to the model for prediction
-                let observations = ObjectDetection.detect(uiImage)
-                imageStatus = .finished(uiImage)
-                imageAnalysis = Analysis(observations)
-                imageDescription = ""
-                if imageAnalysis.isHealthy() {
-                    imageDescription = "Healthy"
-                }
+            if let data = try await pickerItem.loadTransferable(type: Movie.self) {
+                videoStatus = .loaded(data)
             } else {
-                throw LoadingError.contentTypeNotSupported
+                videoStatus = .failed
             }
         } catch {
-            imageStatus = .failed(error)
+            videoStatus = .failed
         }
     }
 }
 
-extension ImageAttachment : Hashable {
+extension VideoAttachment : Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(ObjectIdentifier(self))
     }
 
-    static func == (lhs: ImageAttachment, rhs: ImageAttachment) -> Bool {
+    static func == (lhs: VideoAttachment, rhs: VideoAttachment) -> Bool {
         lhs.pickerItem.itemIdentifier == rhs.pickerItem.itemIdentifier
     }
 }
@@ -108,7 +84,7 @@ extension ImageAttachment : Hashable {
 
 
 /// A view model that integrates a Photos picker.
-@MainActor final class ImageViewModel: ObservableObject {
+@MainActor final class VideoViewModel: ObservableObject {
 
    /// A class that manages an image that a person selects in the Photos picker.
    /// An array of items for the picker's selected photos.
@@ -119,7 +95,7 @@ extension ImageAttachment : Hashable {
             // Update the attachments according to the current picker selection.
             let newAttachments = selection.map { item in
                 // Access an existing attachment, if it exists; otherwise, create a new attachment.
-                attachmentByIdentifier[item.identifier] ?? ImageAttachment(item)
+                attachmentByIdentifier[item.identifier] ?? VideoAttachment(item)
             }
             // Update the saved attachments array for any new attachments loaded in scope.
             let newAttachmentByIdentifier = newAttachments.reduce(into: [:]) { partialResult, attachment in
@@ -132,10 +108,10 @@ extension ImageAttachment : Hashable {
     }
     
     /// An array of image attachments for the picker's selected photos.
-    @Published var attachments = [ImageAttachment]()
+    @Published var attachments = [VideoAttachment]()
     
     /// A dictionary that stores previously loaded attachments for performance.
-    private var attachmentByIdentifier = [String: ImageAttachment]()
+    private var attachmentByIdentifier = [String: VideoAttachment]()
 }
 
 /// A extension that handles the situation in which a picker item lacks a photo library.
