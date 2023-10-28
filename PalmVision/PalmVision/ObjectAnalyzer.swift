@@ -29,7 +29,7 @@ class Analysis {
     }
     
     func treeCount() -> Int {
-        (self.objectCounts[.ganoderna] ?? 0) +
+        (self.objectCounts[.ganoderma] ?? 0) +
         (self.objectCounts[.healthy] ?? 0) +
         (self.objectCounts[.nitrogen] ?? 0)
     }

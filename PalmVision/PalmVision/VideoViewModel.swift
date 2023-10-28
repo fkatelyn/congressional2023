@@ -2,7 +2,7 @@
 //  VideoViewModel.swift
 //  PalmVision
 //
-//  Source: Apple WWDC 2023 PhotosPicker example
+//  Source: Apple WWDC 2023 PhotosPicker tutorial
 //  Modified by Katelyn Fritz on 10/25/23.
 //
 

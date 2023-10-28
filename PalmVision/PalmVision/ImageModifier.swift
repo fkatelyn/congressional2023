@@ -1,7 +1,7 @@
 //
 //  ImageModifier.swift
 //  Utility to zoom and scroll a SwitchUI View based on tutorial below:
-//  https://medium.com/@priya_talreja/pinch-zoom-pan-image-and-double-tap-to-zoom-image-in-swiftui-878ca70c539dCreated
+//  https://medium.com/@priya_talreja/pinch-zoom-pan-image-and-double-tap-to-zoom-image-in-swiftui-878ca70c539d
 //
 
 import Foundation

@@ -2,7 +2,7 @@
 //  DetectionView.swift
 //  PalmVision
 //
-//  Source: https://github.com/npna/CoreMLPlayer
+//  Inspired by: https://github.com/npna/CoreMLPlayer
 //  Modified by Katelyn Fritz on 10/25/23.
 //
 import SwiftUI
@@ -17,7 +17,7 @@ struct DetectionRect: View {
     var body: some View {
         Group {
             rectangle
-            objectLabel(drawingRect: drawingRect, object: obj)
+            //objectLabel(drawingRect: drawingRect, object: obj)
         }
         .onTapGesture {
             isPresented = true
@@ -26,7 +26,7 @@ struct DetectionRect: View {
     
     var rectangle: some View {
         Rectangle()
-            .stroke(borderColor, lineWidth: borderWidth)
+            .stroke(ObjectLabel.from(observation: obj).color, lineWidth: borderWidth)
             .background(Color.clear)
             .frame(width: drawingRect.width, height: drawingRect.height)
             .offset(x: drawingRect.origin.x, y: drawingRect.origin.y)
@@ -54,7 +54,8 @@ struct DetectionRect: View {
                     .padding(.horizontal, 2)
                     .minimumScaleFactor(labelWrap ? labelMinFontScale : 1)
                     .frame(height: labelFontSize + labelExtraHeight)
-                    .background(labelBackgroundColor)
+                    //.background(labelBackgroundColor)
+                    .background(object.getColor())
             }
             .frame(width: drawingRect.width + borderWidth, height: drawingRect.height, alignment:.topLeading)
             .offset(x: drawingRect.origin.x - (borderWidth / 2), y: drawingRect.origin.y - (13.0 + (borderWidth / 2) + labelExtraHeight))
@@ -114,9 +115,13 @@ struct DetectionView: View {
         return CGRect(x: offsetX, y: offsetY, width: width, height: height)
     }
     
-    func rectForNormalizedRect(normalizedRect: CGRect, width: Int, height: Int) -> CGRect {
-        let transform = CGAffineTransform(scaleX: 1, y: -1).translatedBy(x: 0, y: -CGFloat(height))
-        return VNImageRectForNormalizedRect(normalizedRect, width, height).applying(transform)
+    func rectForNormalizedRect(normalizedRect: CGRect, width: Int, height: Int, geometry: GeometryProxy) -> CGRect {
+        let rect = VNImageRectForNormalizedRect(normalizedRect, width, height)
+        let cgRect = CGRect(x: rect.origin.x, y: (geometry.size.height - rect.origin.y - rect.size.height), width: rect.size.width, height: rect.size.height)
+        return cgRect
+        
+        //let transform = CGAffineTransform(scaleX: 1, y: -1).translatedBy(x: 0, y: -CGFloat(height))
+        //return VNImageRectForNormalizedRect(normalizedRect, width, height).applying(transform)
     }
     func prepareObjectForSwiftUI(object: Observation, geometry: GeometryProxy) -> CGRect {
         let objectRect = CGRect(x: object.boundingBox.origin.x,
@@ -124,7 +129,7 @@ struct DetectionView: View {
                                 width: object.boundingBox.width,
                                 height: object.boundingBox.height)
         
-        return rectForNormalizedRect(normalizedRect: objectRect, width: Int(geometry.size.width), height: Int(geometry.size.height))
+        return rectForNormalizedRect(normalizedRect: objectRect, width: Int(geometry.size.width), height: Int(geometry.size.height), geometry: geometry)
     }
     
     func forEachBB(detectedObjects: [Observation], geometry: GeometryProxy) -> some View {

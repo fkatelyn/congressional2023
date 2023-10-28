@@ -2,7 +2,7 @@
 //  VideoDetectionView.swift
 //  PalmVision
 //
-//  Source: https://github.com/npna/CoreMLPlayer
+//  Inspired by: https://github.com/npna/CoreMLPlayer
 //  Modified by Katelyn Fritz on 10/24/23.
 //
 
@@ -11,8 +11,6 @@ import AVFoundation
 import AVKit
 import Combine
 import Vision
-
-
 
 class VideoDetection: ObservableObject {
     var isPlayable: Bool = false
@@ -195,7 +193,7 @@ class VideoDetection: ObservableObject {
         
         return nil
     }
-   
+  
     func detectObjectsInFrame(completion: (() -> ())? = nil) {
         guard let pixelBuffer = getPixelBuffer() else { return }
         let detectionResult = ObjectDetection.detect(pixelBuffer)

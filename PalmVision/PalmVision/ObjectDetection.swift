@@ -10,11 +10,72 @@ import CoreML
 import Vision
 import SwiftUI
 
+enum PalmLabels {
+    
+}
+
+enum ObjectLabel: String, CaseIterable, Identifiable {
+    case unknown = "unknown"
+    case healthy = "healthy"
+    case nitrogen = "nitrogen"
+    case banana = "banana"
+    case ganoderma = "ganoderma"
+    case cattle = "cattle"
+    case young = "young"
+    
+    var id: Self { self }  // Using the case itself as the identifier
+
+    
+    var color: Color {
+        switch self {
+        case .healthy:
+            return Color.green
+        case .nitrogen:
+            return Color.orange
+        case .banana:
+            return Color.yellow
+        case .ganoderma:
+            return Color.red
+        case .cattle:
+            return Color.mint
+        case .young:
+            return Color.teal
+        case .unknown:
+            return Color.gray
+        }
+    }
+    
+    public static func from(observation: Observation) -> ObjectLabel {
+        return ObjectLabel(rawValue: observation.label) ?? .unknown
+    }
+}
+
 struct Observation: Identifiable {
     let id: UUID
     let label: String
     let confidence: VNConfidence
     let boundingBox: CGRect
+    
+    static func getLabelColor(_ label: String) -> Color {
+        switch label {
+        case "healthy":
+            return Color.green
+        case "nitrogen":
+            return Color.orange
+        case "banana":
+            return Color.yellow
+        case "ganoderma":
+            return Color.red
+        case "cattle":
+            return Color.cyan
+        default:
+            return Color.purple
+        }
+    }
+    
+    func getColor() -> Color {
+        Observation.getLabelColor(label)
+    }
 }
 
 struct Observations {
@@ -22,13 +83,6 @@ struct Observations {
     let detectionTime: String
 }
 
-enum ObjectLabel: String {
-    case unknown, healthy, nitrogen, ganoderna, banana, cattle, young
-    
-    public static func from(observation: Observation) -> ObjectLabel {
-        return ObjectLabel(rawValue: observation.label) ?? .unknown
-    }
-}
  
 struct ObjectDetection {
     static let compiledModel = try! best(configuration: MLModelConfiguration())

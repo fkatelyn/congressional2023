@@ -12,10 +12,35 @@ import PhotosUI
 
 struct ObjectDetectionView: View {
     @ObservedObject var imageAttachment: ImageAttachment
-
+   
+    @ViewBuilder
+    func drawObjects(detectedObjects: [Observation],
+                     label: ObjectLabel,
+                     geometry: GeometryProxy) -> some View {
+        Path { path in
+            for observation in detectedObjects {
+                if observation.label != label.rawValue {
+                    continue
+                }
+                let rect = VNImageRectForNormalizedRect(observation.boundingBox, Int(geometry.size.width), Int(geometry.size.height))
+                let cgRect = CGRect(x: rect.origin.x, y: (geometry.size.height - rect.origin.y - rect.size.height), width: rect.size.width, height: rect.size.height)
+                path.addRect(cgRect)
+            }
+        }
+        .stroke(label.color, lineWidth: 2)
+    }
+    
     var body: some View {
         let detectedObjects = imageAttachment.imageAnalysis.observations
         GeometryReader { geometry in
+            
+            ForEach(ObjectLabel.allCases) {
+                label in
+                drawObjects(detectedObjects: detectedObjects,
+                            label: label,
+                            geometry: geometry)
+            }
+            /*
             Path { path in
                 for observation in detectedObjects {
                     let rect = VNImageRectForNormalizedRect(observation.boundingBox, Int(geometry.size.width), Int(geometry.size.height))
@@ -24,6 +49,7 @@ struct ObjectDetectionView: View {
                 }
             }
             .stroke(Color.red, lineWidth: 2)
+             */
         }
     }
 }
