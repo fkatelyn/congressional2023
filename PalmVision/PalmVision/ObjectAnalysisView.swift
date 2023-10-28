@@ -40,8 +40,17 @@ struct ObjectAnalysisView: View {
             default:
                 ProgressView()
             }
-            
-            Text("Trees \(imageAttachment.imageAnalysis.treeCountsText)")
+            let analysis = imageAttachment.imageAnalysis
+            let objectCounts = analysis.objectCounts
+            //Text("Trees \(imageAttachment.imageAnalysis.treeCountsText)")
+            Text("Trees \(analysis.treeCountsText)")
+            ForEach(ObjectLabel.allCases) {
+                label in
+                if objectCounts.keys.contains(label) {
+                    Text("\(label.rawValue): \(analysis.objectCounts[label]!)")
+                        .foregroundColor(label.color)
+                }
+            }
             Spacer()
         }
         .onAppear() {

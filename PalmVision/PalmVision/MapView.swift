@@ -100,7 +100,7 @@ struct MapView: View {
                         Image(systemName: "magnifyingglass")
                     }
                     .navigationDestination(isPresented: $showSheet) {
-                        if selectedTag != nil {
+                        if selectedTag != nil && selectedTag! <= imagesModel.attachments.count {
                             ObjectAnalysisView(imageAttachment: imagesModel.attachments[selectedTag!-1])
                         }
                     }

@@ -104,7 +104,7 @@ struct VideoAttachmentView: View {
     /// A container view for the row.
     var body: some View {
         HStack {
-            
+            /*
             // Define text that describes a selected photo.
             VStack(alignment: .leading) {
                 Text("Hello")
@@ -112,6 +112,7 @@ struct VideoAttachmentView: View {
             
             // Add space after the description.
             Spacer()
+             */
             
             // Display the image that the text describes.
             switch videoAttachment.videoStatus {
