@@ -16,8 +16,8 @@ struct ObjectAnalysisView: View {
     @State private var scale: CGFloat = 1.0
     @State private var currentScale: CGFloat = 1.0
     @State private var lastScaleValue: CGFloat = 1.0
-    
-    
+    @EnvironmentObject var settings: Settings
+
     var body: some View {
         VStack {
             switch imageAttachment.imageStatus {
@@ -43,6 +43,9 @@ struct ObjectAnalysisView: View {
             
             Text("Trees \(imageAttachment.imageAnalysis.treeCountsText)")
             Spacer()
+        }
+        .onAppear() {
+            settings.imageAttachement = imageAttachment
         }
     }
 }

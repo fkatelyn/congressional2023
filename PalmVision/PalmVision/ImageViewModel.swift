@@ -48,6 +48,9 @@ import PhotosUI
     @Published var imageLocationLon: String = ""
     @Published var imageAnalysis: Analysis = Analysis([])
     
+    
+    //@Published var isSelected: Bool = false
+    
     /// An identifier for the photo.
     nonisolated var id: String {
         pickerItem.identifier
@@ -82,10 +85,7 @@ import PhotosUI
                 let observations = ObjectDetection.detect(uiImage)
                 imageStatus = .finished(uiImage)
                 imageAnalysis = Analysis(observations)
-                imageDescription = ""
-                if imageAnalysis.isHealthy() {
-                    imageDescription = "Healthy"
-                }
+                imageDescription = imageAnalysis.getPlantCondition().rawValue
             } else {
                 throw LoadingError.contentTypeNotSupported
             }

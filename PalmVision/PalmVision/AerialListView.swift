@@ -49,6 +49,7 @@ struct ImageList: View {
     
     /// A view model for the list.
     @ObservedObject var viewModel: ImageViewModel
+    @State var selectedRow: ImageAttachment?
     
     /// A container view for the list.
     var body: some View {
@@ -62,12 +63,14 @@ struct ImageList: View {
             Spacer()
         } else {
             // Create a row for each selected photo in the picker.
-            List(viewModel.attachments, id: \.self) { imageAttachment in
+            List(viewModel.attachments, id: \.self) {
+                imageAttachment in
                 NavigationLink(value: imageAttachment) {
                     ImageAttachmentView(imageAttachment: imageAttachment)
                 }
                 .navigationDestination(for: ImageAttachment.self) {
-                    item in ObjectAnalysisView(imageAttachment: item)
+                    item in 
+                    ObjectAnalysisView(imageAttachment: item)
                 }
             }
             .listStyle(.plain)

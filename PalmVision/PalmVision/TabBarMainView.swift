@@ -8,10 +8,20 @@
 import Foundation
 import SwiftUI
 
+
+// Our observable object class
+class Settings: ObservableObject {
+    @Published var imageAttachement: ImageAttachment?
+    @Published var selectedRow: Int = 0
+}
+
+
 struct TabBarMainView: View {
     @StateObject private var viewModel = ImageViewModel()
     @StateObject private var videoViewModel = VideoViewModel()
     @State private var selectedTab = 0
+    @StateObject var settings = Settings()
+
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -71,6 +81,7 @@ struct TabBarMainView: View {
             .tag(4)
              */
         }
+        .environmentObject(settings)
     }
 }
 

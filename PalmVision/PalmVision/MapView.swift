@@ -16,6 +16,10 @@ struct LocationPoint: Identifiable {
 
 struct MapView: View {
     @ObservedObject var imagesModel: ImageViewModel
+    @EnvironmentObject var settings: Settings
+    @State private var selectedTag: Int?
+    @State private var showSheet = false
+  
     
     func attachmentToLocation(_ attachment: ImageAttachment) -> LocationPoint {
         print("\(attachment.imageLocationLat) \(attachment.imageLocationLon)")
@@ -42,13 +46,13 @@ struct MapView: View {
     }
     
     
-    @State private var selectedTag: Int?
-    @State private var showSheet = false
-    var body: some View {
+   var body: some View {
         VStack {
+            /*
             Text(selectedTag == nil ? "Nothing Selected" : "\(selectedTag!)")
                 .bold()
                 .padding()
+             */
             Map(selection: $selectedTag) {
                 ForEach(imagesModel.attachments.indices, id: \.self) {
                     index in
@@ -56,7 +60,7 @@ struct MapView: View {
                     let location = attachmentToLocation(attachment)
                     Marker("palm", coordinate: location.coordinate)
                         .tint(selectedTag == index + 1 ? .blue :
-                                attachment.imageAnalysis.isHealthy() ? .green : .red)
+                                attachment.imageAnalysis.getPinColor())
                         .tag(index + 1)
                 }
             }
@@ -64,6 +68,25 @@ struct MapView: View {
             .mapControls {
                 MapCompass()
                 MapScaleView()
+            }
+            .onAppear {
+                if settings.imageAttachement != nil {
+                    for index in imagesModel.attachments.indices {
+                        if imagesModel.attachments[index] == settings.imageAttachement {
+                            selectedTag = index + 1
+                        }
+                    }
+                }
+            }
+            .onChange(of: selectedTag) {
+                if selectedTag != nil {
+                    for index in imagesModel.attachments.indices {
+                        if index + 1 == selectedTag {
+                            let a = imagesModel.attachments[index]
+                            settings.imageAttachement = a
+                        }
+                    }
+                }
             }
        }
         .toolbar {

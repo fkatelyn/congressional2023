@@ -4,6 +4,14 @@
 //
 //  Created by Katelyn Fritz on 10/17/23.
 //
+import SwiftUI
+
+enum PlantCondition: String, CaseIterable {
+    case healthy = "Healthy"
+    case malnutrition = "Lack of nutrition"
+    case sick = "Sick"
+    case unknwon = "Unknown"
+}
 
 class Analysis {
     let observations: [Observation]
@@ -30,6 +38,7 @@ class Analysis {
     
     func treeCount() -> Int {
         (self.objectCounts[.ganoderma] ?? 0) +
+        (self.objectCounts[.young] ?? 0) +
         (self.objectCounts[.healthy] ?? 0) +
         (self.objectCounts[.nitrogen] ?? 0)
     }
@@ -39,6 +48,32 @@ class Analysis {
         let healthy: Int = objectCounts[.healthy] ?? 0
         let total: Int = treeCount()
         let fraction: Float = Float(healthy) / Float(total == 0 ? 1 : total)
-        return fraction >= 0.5
+        return fraction >= 0.7
+    }
+    
+    public func getPlantCondition() -> PlantCondition {
+        let healthy: Int = objectCounts[.healthy] ?? 0
+        let total: Int = treeCount()
+        let fraction: Float = Float(healthy) / Float(total == 0 ? 1 : total)
+        if fraction >= 0.7 {
+            return .healthy
+        } else if fraction >= 0.3 {
+            return .malnutrition
+        } else {
+            return .sick
+        }
+    }
+    
+    public func getPinColor() -> Color {
+        switch getPlantCondition() {
+        case .healthy:
+            return .green
+        case .sick:
+            return .red
+        case .malnutrition:
+            return .orange
+        default:
+            return .gray
+        }
     }
 }
