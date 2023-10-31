@@ -14,6 +14,7 @@
 		874059BE2AEA09D900385A1D /* DetectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874059BD2AEA09D900385A1D /* DetectionView.swift */; };
 		874059C02AEA3E0D00385A1D /* VideoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874059BF2AEA3E0D00385A1D /* VideoListView.swift */; };
 		874059C22AEA3EB600385A1D /* VideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874059C12AEA3EB600385A1D /* VideoViewModel.swift */; };
+		874437012AF19BB7009BA632 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874437002AF19BB7009BA632 /* LaunchScreen.swift */; };
 		876F55B12AC11D1E00048430 /* PalmVisionApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F55B02AC11D1E00048430 /* PalmVisionApp.swift */; };
 		876F55B32AC11D1E00048430 /* AerialListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876F55B22AC11D1E00048430 /* AerialListView.swift */; };
 		876F55B52AC11D2000048430 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 876F55B42AC11D2000048430 /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 		874059BD2AEA09D900385A1D /* DetectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionView.swift; sourceTree = "<group>"; };
 		874059BF2AEA3E0D00385A1D /* VideoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListView.swift; sourceTree = "<group>"; };
 		874059C12AEA3EB600385A1D /* VideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewModel.swift; sourceTree = "<group>"; };
+		874437002AF19BB7009BA632 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 		876F55AD2AC11D1E00048430 /* PalmVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PalmVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		876F55B02AC11D1E00048430 /* PalmVisionApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PalmVisionApp.swift; sourceTree = "<group>"; };
 		876F55B22AC11D1E00048430 /* AerialListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AerialListView.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				87FCB2912AE878760074FC77 /* VideoDetectionView.swift */,
 				874059BD2AEA09D900385A1D /* DetectionView.swift */,
 				871D11AD2AE635D500BADF3C /* ChatView.swift */,
+				874437002AF19BB7009BA632 /* LaunchScreen.swift */,
 			);
 			path = PalmVision;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 			files = (
 				874059BE2AEA09D900385A1D /* DetectionView.swift in Sources */,
 				876F55B32AC11D1E00048430 /* AerialListView.swift in Sources */,
+				874437012AF19BB7009BA632 /* LaunchScreen.swift in Sources */,
 				8781ACBA2ADC96550080A17A /* MapView.swift in Sources */,
 				87AEEED92ADF65B000059AE5 /* ObjectDetection.swift in Sources */,
 				874059C02AEA3E0D00385A1D /* VideoListView.swift in Sources */,
@@ -495,6 +499,7 @@
 				DEVELOPMENT_TEAM = CTQ5C85MG6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Agrificial;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photos to pick an image.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -529,6 +534,7 @@
 				DEVELOPMENT_TEAM = CTQ5C85MG6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Agrificial;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photos to pick an image.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

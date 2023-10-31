@@ -83,7 +83,9 @@ struct MapView: View {
                         let attachment = imagesModel.attachments[index]
                         let location = attachmentToLocation(attachment)
                         Marker("\(index + 1)", coordinate: location.coordinate)
-                            .tint(.blue)
+                            .tint(selectedTag == index + 1 ? .blue :
+                                    attachment.imageAnalysis.getPinColor())
+                            .tag(index + 1)
                     }
                 }
             }

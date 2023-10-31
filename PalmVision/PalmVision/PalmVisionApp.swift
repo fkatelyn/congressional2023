@@ -9,9 +9,27 @@ import SwiftUI
 
 @main
 struct PalmVisionApp: App {
+    @State private var isActive: Bool = false
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if isActive {
+                ContentView()
+            } else {
+                LaunchScreen()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            withAnimation {
+                                self.isActive = true
+                            }
+                        }
+                    }
+            }
         }
     }
+    
+    /*var body: some Scene {
+     WindowGroup {
+     ContentView()
+     }
+     }*/
 }
