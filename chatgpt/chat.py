@@ -20,9 +20,6 @@ def run_conversation():
     messages = [
         {"role": "system",
          "content": "I am an expert in palm oil trees."
-         #"content": "Don't make assumptions about what values to "
-         #           "plug into functions. Ask for clarification if a user
-         #           request is ambiguous. I am an expert in palm oil trees."
         },
         {"role": "user",
                  "content": """I have trees with gps locations as follow:
@@ -35,8 +32,7 @@ def run_conversation():
                   location. Make sure the location with the most trees 
                   that is lack of nitrogen are treated first. 
                   Visit maximum of one gps location per day, and not more than 1 location. Maximize travel time.
-                  write in tabular format, with the following format:
-                  --> location number, longitude, latitude, lack of nitrogen, healthy."""}]
+                  """}]
     '''
     {
         "name": "reset_gps_location",
@@ -96,9 +92,6 @@ def run_conversation():
         elif function_name in available_functions:
             function_to_call = available_functions[function_name]
             function_args = json.loads(response_message["function_call"]["arguments"])
-            #if function_name == "reset_gps_location":
-            #    function_response = function_to_call()
-            #else:
             function_response = function_to_call(**function_args)
         else:
             print(f"missing {function_name}")
@@ -110,7 +103,7 @@ def run_conversation():
             {
                 "role": "function",
                 "name": function_name,
-                "content": "done"
+                "content": function_response
             }
         )  # extend conversation with function response
         second_response = openai.ChatCompletion.create(
