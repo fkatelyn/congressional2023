@@ -87,14 +87,9 @@ def run_conversation():
             "reset_gps_location": reset_gps_location,
         }  # only one function in this example, but you can have multiple
         function_name = response_message["function_call"]["name"]
-        if function_name == "python":
-            print(response_message["function_call"]["arguments"])
-        elif function_name in available_functions:
-            function_to_call = available_functions[function_name]
-            function_args = json.loads(response_message["function_call"]["arguments"])
-            function_response = function_to_call(**function_args)
-        else:
-            print(f"missing {function_name}")
+        function_to_call = available_functions[function_name]
+        function_args = json.loads(response_message["function_call"]["arguments"])
+        function_response = function_to_call(**function_args)
 
         # Step 4: send the info on the function call and function response to GPT
         messages.append(response_message)  # extend conversation with

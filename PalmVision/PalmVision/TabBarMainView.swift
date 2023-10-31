@@ -39,7 +39,7 @@ struct TabBarMainView: View {
             .tag(0)
             
             NavigationStack {
-                MapView(imagesModel: viewModel)
+                MapView(imagesModel: viewModel, overwriteLocations: nil)
                 /*
                 NavigationLink("Go to For You Detail", destination: Text("For You Detail View"))
                     .navigationBarTitle("For You", displayMode: .inline)
@@ -61,11 +61,11 @@ struct TabBarMainView: View {
             .tag(2)
             
             NavigationStack {
-                ChatView()
+                ChatView(imagesModel: viewModel)
             }
             .tabItem {
                 Image(systemName: "message")
-                Text("DrDrone")
+                Text("Chat")
             }
             .tag(3)
             

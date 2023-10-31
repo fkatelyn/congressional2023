@@ -16,6 +16,7 @@ struct LocationPoint: Identifiable {
 
 struct MapView: View {
     @ObservedObject var imagesModel: ImageViewModel
+    var overwriteLocations: LocationsContainer?
     @EnvironmentObject var settings: Settings
     @State private var selectedTag: Int?
     @State private var showSheet = false
@@ -29,6 +30,18 @@ struct MapView: View {
     }
     
     var locations: [LocationPoint] {
+        if overwriteLocations != nil {
+            var computedLocations: [LocationPoint] = []
+           
+            var locations = overwriteLocations!.lastMentionedLocations
+            for location in locations {
+                computedLocations.append(
+                    LocationPoint(coordinate: CLLocationCoordinate2D(
+                        latitude: location.latitude,
+                        longitude: location.longitude)))
+            }
+            return computedLocations
+        }
         var computedLocations: [LocationPoint] = []
         
         for attachment in imagesModel.attachments {
@@ -54,14 +67,24 @@ struct MapView: View {
                 .padding()
              */
             Map(selection: $selectedTag) {
-                ForEach(imagesModel.attachments.indices, id: \.self) {
-                    index in
-                    let attachment = imagesModel.attachments[index]
-                    let location = attachmentToLocation(attachment)
-                    Marker("palm", coordinate: location.coordinate)
-                        .tint(selectedTag == index + 1 ? .blue :
-                                attachment.imageAnalysis.getPinColor())
-                        .tag(index + 1)
+                if overwriteLocations != nil {
+                    let locations = overwriteLocations!.lastMentionedLocations
+                    ForEach(locations) {
+                        location in
+                        let coordinate = CLLocationCoordinate2D(
+                            latitude: location.latitude,
+                            longitude: location.longitude)
+                        Marker("\(location.id)", coordinate: coordinate)
+                            .tint(.blue)
+                    }
+                } else {
+                    ForEach(imagesModel.attachments.indices, id: \.self) {
+                        index in
+                        let attachment = imagesModel.attachments[index]
+                        let location = attachmentToLocation(attachment)
+                        Marker("\(index + 1)", coordinate: location.coordinate)
+                            .tint(.blue)
+                    }
                 }
             }
             .mapStyle(.imagery(elevation: .realistic))
