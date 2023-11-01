@@ -65,12 +65,9 @@ def yolo_video(im, conf, size=640):
 inputs = gr.inputs.Image(type='pil', label="Original Image")
 outputs = gr.outputs.Image(type="pil", label="Output Image")
 
-title = "YOLOv5"
-description = "YOLOv5 Gradio demo for object detection. Upload an image or click an example image to use."
-article = "<p style='text-align: center'>YOLOv5 is a family of compound-scaled object detection models trained on the COCO dataset, and includes " \
-          "simple functionality for Test Time Augmentation (TTA), model ensembling, hyperparameter evolution, " \
-          "and export to ONNX, CoreML and TFLite. <a href='https://github.com/ultralytics/yolov5'>Source code</a> |" \
-          "<a href='https://apps.apple.com/app/id1452689527'>iOS App</a> | <a href='https://pytorch.org/hub/ultralytics_yolov5'>PyTorch Hub</a></p>"
+title = "Palm Oil Tree health detection"
+description = "Upload an image or click an example image to use."
+article = ""
 
 examples = glob.glob(f'~/Downloads/*.mp4')
 examples = list(map(lambda x: [x], examples))
