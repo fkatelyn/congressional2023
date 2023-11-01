@@ -29,37 +29,7 @@ struct MapView: View {
             longitude: Double(attachment.imageLocationLon) ?? 0))
     }
     
-    var locations: [LocationPoint] {
-        if overwriteLocations != nil {
-            var computedLocations: [LocationPoint] = []
-           
-            var locations = overwriteLocations!.lastMentionedLocations
-            for location in locations {
-                computedLocations.append(
-                    LocationPoint(coordinate: CLLocationCoordinate2D(
-                        latitude: location.latitude,
-                        longitude: location.longitude)))
-            }
-            return computedLocations
-        }
-        var computedLocations: [LocationPoint] = []
-        
-        for attachment in imagesModel.attachments {
-            if attachment.imageLocationLat == "0" || attachment.imageLocationLat == "" ||
-                attachment.imageLocationLon == "0" || attachment.imageLocationLon == "" {
-                
-            } else {
-                computedLocations.append(
-                    LocationPoint(coordinate: CLLocationCoordinate2D(
-                        latitude: Double(attachment.imageLocationLat) ?? 0,
-                        longitude: Double(attachment.imageLocationLon) ?? 0)))
-            }
-        }
-        return computedLocations
-    }
-    
-    
-   var body: some View {
+    var body: some View {
         VStack {
             /*
             Text(selectedTag == nil ? "Nothing Selected" : "\(selectedTag!)")

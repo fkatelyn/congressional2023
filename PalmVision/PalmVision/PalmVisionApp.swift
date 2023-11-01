@@ -15,7 +15,7 @@ struct PalmVisionApp: App {
             if isActive {
                 ContentView()
             } else {
-                LaunchScreen()
+                LaunchScreenView()
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                             withAnimation {
