@@ -3,8 +3,8 @@
 Directory Descriptions:
 
 
-PalmVision: App source code written in Swift
+`PalmVision`: App source code written in Swift
 
-Model: Source code and notebook for training an object detection model
+`model`: Source code and notebook for training an object detection model
 
-Dataset: Dataset used by the model
+`dataset`: Dataset used by the model
