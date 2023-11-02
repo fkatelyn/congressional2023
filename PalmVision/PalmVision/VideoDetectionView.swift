@@ -2,7 +2,7 @@
 //  VideoDetectionView.swift
 //  PalmVision
 //
-//  Inspired by: https://github.com/npna/CoreMLPlayer
+//  From https://github.com/npna/CoreMLPlayer
 //  Modified by Katelyn Fritz on 10/24/23.
 //
 

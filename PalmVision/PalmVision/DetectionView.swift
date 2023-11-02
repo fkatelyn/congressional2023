@@ -2,7 +2,7 @@
 //  DetectionView.swift
 //  PalmVision
 //
-//  Inspired by: https://github.com/npna/CoreMLPlayer
+//  From https://github.com/npna/CoreMLPlayer
 //  Modified by Katelyn Fritz on 10/25/23.
 //
 import SwiftUI
