@@ -7,4 +7,4 @@ Directory descriptions:
 
 `model`: Source code and notebook for training the object detection model
 
-`dataset`: Dataset used by the model
+`dataset`: Dataset used to train the model
