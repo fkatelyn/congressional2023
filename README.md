@@ -1,6 +1,6 @@
 # Congressional Apps Challenge 2023
 
-Directory Descriptions:
+Directory descriptions:
 
 
 `PalmVision`: App source code written in Swift
