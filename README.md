@@ -5,6 +5,6 @@ Directory Descriptions:
 
 `PalmVision`: App source code written in Swift
 
-`model`: Source code and notebook for training an object detection model
+`model`: Source code and notebook for training the object detection model
 
 `dataset`: Dataset used by the model
