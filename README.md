@@ -1,9 +1,7 @@
-# congressional2023
- Congressional Apps Challenge 2023
+#Congressional Apps Challenge 2023
 
-Directories description:
+Directory Descriptions:
 
-
-PalmVision: App source code in Swift
-model: Object detection training source code and notebook
-dataset: model's dataset
+PalmVision: App source code written in Swift
+Model: Source code and notebook for training an object detection model
+Dataset: Dataset used by the model
